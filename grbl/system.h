@@ -57,6 +57,7 @@
 #define STATE_HOLD          bit(4) // Active feed hold
 #define STATE_SAFETY_DOOR   bit(5) // Safety door is ajar. Feed holds and de-energizes system.
 #define STATE_MOTION_CANCEL bit(6) // Motion cancel by feed hold and return to idle. 
+#define STATE_JOG			bit(7) // Jogging modes
 
 // Define system suspend states.
 #define SUSPEND_DISABLE       0      // Must be zero.

@@ -22,7 +22,7 @@
 #define grbl_h
 
 // Grbl versioning system
-#define GRBL_VERSION "0.9h"
+#define GRBL_VERSION "0.9h/GRBL-JOG"
 #define GRBL_VERSION_BUILD "20150210"
 
 // Define standard libraries used by Grbl.
@@ -58,5 +58,6 @@
 #include "serial.h"
 #include "spindle_control.h"
 #include "stepper.h"
+#include "jogging.h"
 
 #endif

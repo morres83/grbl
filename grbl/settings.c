@@ -74,6 +74,8 @@ void settings_restore_global_settings() {
   settings.homing_seek_rate = DEFAULT_HOMING_SEEK_RATE;
   settings.homing_debounce_delay = DEFAULT_HOMING_DEBOUNCE_DELAY;
   settings.homing_pulloff = DEFAULT_HOMING_PULLOFF;
+  settings.z_zero_gauge = DEFAULT_Z_GAUGE;
+  settings.z_zero_pulloff = DEFAULT_Z_PULLOFF;
 
   settings.flags = 0;
   if (DEFAULT_REPORT_INCHES) { settings.flags |= BITFLAG_REPORT_INCHES; }
@@ -270,6 +272,8 @@ uint8_t settings_store_global_setting(uint8_t parameter, float value) {
       case 25: settings.homing_seek_rate = value; break;
       case 26: settings.homing_debounce_delay = int_value; break;
       case 27: settings.homing_pulloff = value; break;
+	  case 30: settings.z_zero_gauge = value; break;
+	  case 31: settings.z_zero_pulloff = value; break;
       default: 
         return(STATUS_INVALID_STATEMENT);
     }

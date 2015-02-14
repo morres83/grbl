@@ -68,7 +68,9 @@ void report_status_message(uint8_t status_code)
       printPgmString(PSTR("Line overflow")); break; 
       // case STATUS_MAX_STEP_RATE_EXCEEDED: 
       // printPgmString(PSTR("Step rate > 30kHz")); break;
-      
+      case STATUS_JOG_ONGOING_LOCK:
+	  printPgmString(PSTR("Jogging ongoing; Ignoring GCode")); break;
+	  
       // Common g-code parser errors.
       case STATUS_GCODE_MODAL_GROUP_VIOLATION:
       printPgmString(PSTR("Modal group violation")); break;
@@ -182,7 +184,9 @@ void report_grbl_settings() {
   printPgmString(PSTR(" (homing feed, mm/min)\r\n$25=")); printFloat_SettingValue(settings.homing_seek_rate);
   printPgmString(PSTR(" (homing seek, mm/min)\r\n$26=")); print_uint8_base10(settings.homing_debounce_delay);
   printPgmString(PSTR(" (homing debounce, msec)\r\n$27=")); printFloat_SettingValue(settings.homing_pulloff);
-  printPgmString(PSTR(" (homing pull-off, mm)\r\n"));
+  printPgmString(PSTR(" (homing pull-off, mm)\r\n$30=")); printFloat_SettingValue(settings.z_zero_pulloff);
+  printPgmString(PSTR(" (Z zero pull-off, mm)\r\n$31=")); printFloat_SettingValue(settings.z_zero_gauge);
+  printPgmString(PSTR(" (Z zero gauge, mm)\r\n"));
 
   // Print axis settings
   uint8_t idx, set_idx;
@@ -387,6 +391,7 @@ void report_realtime_status()
     case STATE_ALARM: printPgmString(PSTR("<Alarm")); break;
     case STATE_CHECK_MODE: printPgmString(PSTR("<Check")); break;
     case STATE_SAFETY_DOOR: printPgmString(PSTR("<Door")); break;
+	case STATE_JOG: printPgmString(PSTR("<Jog")); break;
   }
  
   // If reporting a position, convert the current step count (current_position) to millimeters.

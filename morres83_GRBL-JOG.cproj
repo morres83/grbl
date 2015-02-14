@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.2</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.C</ToolchainName>
+    <ProjectGuid>77d1400e-af3f-4571-9ed0-1b2739a845f1</ProjectGuid>
+    <avrdevice>ATmega644</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>C</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>morres83_GRBL-JOG</AssemblyName>
+    <Name>morres83_GRBL-JOG</Name>
+    <RootNamespace>morres83_GRBL-JOG</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <BootSegment>2</BootSegment>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.21.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGcc>
+        <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+        <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+        <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+        <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+        <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+        <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+        <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+        <avrgcc.compiler.symbols.DefSymbols>
+          <ListValues>
+            <Value>NDEBUG</Value>
+          </ListValues>
+        </avrgcc.compiler.symbols.DefSymbols>
+        <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+        <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+        <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+        <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+        <avrgcc.linker.libraries.Libraries>
+          <ListValues>
+            <Value>libm</Value>
+          </ListValues>
+        </avrgcc.linker.libraries.Libraries>
+      </AvrGcc>
+    </ToolchainSettings>
+    <UsesExternalMakeFile>True</UsesExternalMakeFile>
+    <OutputDirectory />
+    <ExternalMakeFilePath>Makefile</ExternalMakeFilePath>
+    <BuildTarget>all</BuildTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGcc>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -DF_CPU=18432000 -mmcu=atmega644</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcc.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcc.linker.libraries.Libraries>
+  <avrgcc.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcc.assembler.debugging.DebugLevel>
+</AvrGcc>
+    </ToolchainSettings>
+    <UsesExternalMakeFile>False</UsesExternalMakeFile>
+    <ExternalMakeFilePath>Makefile</ExternalMakeFilePath>
+    <BuildTarget>all</BuildTarget>
+  </PropertyGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+  <ItemGroup>
+    <Compile Include="grbl\jogging.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\jogging.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\system.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Folder Include="grbl" />
+    <Compile Include="grbl\config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\coolant_control.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\cpu_map.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\eeprom.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\gcode.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\grbl.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\limits.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\motion_control.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\gcode.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\motion_control.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\nuts_bolts.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\planner.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\print.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\probe.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\protocol.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\report.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\serial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\settings.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\spindle_control.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\coolant_control.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\serial.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\protocol.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\spindle_control.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\stepper.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\eeprom.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\settings.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\planner.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\nuts_bolts.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\limits.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\print.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\probe.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\report.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\stepper.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\system.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
