@@ -37,8 +37,15 @@
 // Default settings. Used when resetting EEPROM. Change to desired name in defaults.h
 #define DEFAULTS_HACKSWOOD
 
+// Will TFT Maximite be used on heise pcb for GRBL-JOG
+//#define MAXIMITE
+
 // Serial baud rate
-#define BAUD_RATE 115200
+#ifdef MAXIMITE
+	#define BAUD_RATE 19200  //if Maximite is used, Baud rate needs to be 19200
+#else
+	#define BAUD_RATE 115200
+#endif
 
 // Default cpu mappings. Grbl officially supports the Arduino Uno only. Other processor types
 // may exist from user-supplied templates or directly user-defined in cpu_map.h
@@ -59,7 +66,7 @@
 // If homing is enabled, homing init lock sets Grbl into an alarm state upon power up. This forces
 // the user to perform the homing cycle (or override the locks) before doing anything else. This is
 // mainly a safety feature to remind the user to home, since position is unknown to Grbl.
-#define HOMING_INIT_LOCK // Comment to disable
+//#define HOMING_INIT_LOCK // Comment to disable
 
 // Define the homing cycle patterns with bitmasks. The homing cycle first performs a search mode
 // to quickly engage the limit switches, followed by a slower locate mode, and finished by a short
@@ -333,6 +340,5 @@
 
 
 // ---------------------------------------------------------------------------------------
-
 
 #endif

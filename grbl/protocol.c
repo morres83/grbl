@@ -42,11 +42,13 @@ static void protocol_execute_line(char *line)
     // Empty or comment line. Send status message for syncing purposes.
     report_status_message(STATUS_OK);
 
-  } else if (line[0] == '$') {
+  }
+  else if (line[0] == '$') {
     // Grbl '$' system command
     report_status_message(system_execute_line(line));
     
-  } else if (sys.state == STATE_ALARM) {
+  }
+  else if (sys.state == STATE_ALARM) {
     // Everything else is gcode. Block if in alarm mode.
     report_status_message(STATUS_ALARM_LOCK);
 
@@ -54,15 +56,16 @@ static void protocol_execute_line(char *line)
   else if (sys.state == STATE_JOG) {
 	// GCode shall be ignored as long as jogging is ongoing
 	report_status_message(STATUS_JOG_ONGOING_LOCK);
-  } else {
+  }
+  else {
     // Parse and execute g-code block!
     report_status_message(gc_execute_line(line));
   }
 }
 
 void protocol_process() { //Extracted from main_loop function to use it while in Jogging State
-	uint8_t iscomment = false;
-	uint8_t char_counter = 0;
+	static uint8_t iscomment = false;
+	static uint8_t char_counter = 0;
 	uint8_t c;
 	
 	// Process one line of incoming serial data, as the data becomes available. Performs an
@@ -81,20 +84,24 @@ void protocol_process() { //Extracted from main_loop function to use it while in
 			protocol_execute_line(line); // Line is complete. Execute it!
 			iscomment = false;
 			char_counter = 0;
-			} else {
+		} 
+		else {
 			if (iscomment) {
 				// Throw away all comment characters
 				if (c == ')') {
 					// End of comment. Resume line.
 					iscomment = false;
 				}
-				} else {
+			}
+			else {
 				if (c <= ' ') {
 					// Throw away whitepace and control characters
-					} else if (c == '/') {
+				}
+				else if (c == '/') {
 					// Block delete NOT SUPPORTED. Ignore character.
 					// NOTE: If supported, would simply need to check the system if block delete is enabled.
-					} else if (c == '(') {
+				}
+				else if (c == '(') {
 					// Enable comments flag and ignore all characters until ')' or EOL.
 					// NOTE: This doesn't follow the NIST definition exactly, but is good enough for now.
 					// In the future, we could simply remove the items within the comments, but retain the
@@ -111,14 +118,17 @@ void protocol_process() { //Extracted from main_loop function to use it while in
 					// everything until the next '%' sign. This will help fix resuming issues with certain
 					// functions that empty the planner buffer to execute its task on-time.
 
-					} else if (char_counter >= (LINE_BUFFER_SIZE-1)) {
+				}
+				else if (char_counter >= (LINE_BUFFER_SIZE-1)) {
 					// Detect line buffer overflow. Report error and reset line buffer.
 					report_status_message(STATUS_OVERFLOW);
 					iscomment = false;
 					char_counter = 0;
-					} else if (c >= 'a' && c <= 'z') { // Uppercase lowercase
+				}
+				else if (c >= 'a' && c <= 'z') { // Uppercase lowercase
 					line[char_counter++] = c-'a'+'A';
-					} else {
+				}
+				else {
 					line[char_counter++] = c;
 				}
 			}

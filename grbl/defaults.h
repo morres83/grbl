@@ -64,18 +64,18 @@
 
 #ifdef DEFAULTS_HACKSWOOD
 // Grbl default settings for C'T HACKS WOODMILL. 
-#define DEFAULT_X_STEPS_PER_MM 250.0 //tbd
-#define DEFAULT_Y_STEPS_PER_MM 250.0 //tbd
-#define DEFAULT_Z_STEPS_PER_MM 250.0 //tbd
-#define DEFAULT_X_MAX_RATE 500.0 // mm/min //tbd
-#define DEFAULT_Y_MAX_RATE 500.0 // mm/min //tbd
-#define DEFAULT_Z_MAX_RATE 500.0 // mm/min //tbd
+#define DEFAULT_X_STEPS_PER_MM 80.0 //tbd
+#define DEFAULT_Y_STEPS_PER_MM 80.0 //tbd
+#define DEFAULT_Z_STEPS_PER_MM 100.0 //tbd
+#define DEFAULT_X_MAX_RATE 400.0 // mm/min //tbd
+#define DEFAULT_Y_MAX_RATE 400.0 // mm/min //tbd
+#define DEFAULT_Z_MAX_RATE 100.0 // mm/min //tbd
 #define DEFAULT_X_ACCELERATION (200.0*60*60) // 200*60*60 mm/min^2 = 200 mm/sec^2 //tbd
 #define DEFAULT_Y_ACCELERATION (200.0*60*60) // 200*60*60 mm/min^2 = 200 mm/sec^2 //tbd
 #define DEFAULT_Z_ACCELERATION (200.0*60*60) // 200*60*60 mm/min^2 = 200 mm/sec^2 //tbd
-#define DEFAULT_X_MAX_TRAVEL 200.0 // mm //tbd
-#define DEFAULT_Y_MAX_TRAVEL 200.0 // mm //tbd
-#define DEFAULT_Z_MAX_TRAVEL 200.0 // mm //tbd
+#define DEFAULT_X_MAX_TRAVEL 800.0 // mm //tbd
+#define DEFAULT_Y_MAX_TRAVEL 500.0 // mm //tbd
+#define DEFAULT_Z_MAX_TRAVEL 120.0 // mm //tbd
 	#define DEFAULT_STEP_PULSE_MICROSECONDS 10
 	#define DEFAULT_STEPPING_INVERT_MASK 0
 	#define DEFAULT_DIRECTION_INVERT_MASK 0

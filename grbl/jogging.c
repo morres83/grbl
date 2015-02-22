@@ -17,25 +17,7 @@
   along with Grbl.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <util/delay.h>
-#include <avr/io.h>
-#include <avr/interrupt.h>
-#include "stepper.h"
-#include "settings.h"
-#include "nuts_bolts.h"
-#include "gcode.h"
-#include "config.h"
-#include "spindle_control.h"
-#include "motion_control.h"
-#include "planner.h"
-#include "protocol.h"
-#include "limits.h"
-#include "jogging.h"
-#include "serial.h"
-#include "report.h"
-#include <avr/pgmspace.h>
-#include "report.h"
-#include "print.h"
+#include "grbl.h"
 
 #define JOG_SPEED_FAC (JOG_MAX_SPEED-JOG_MIN_SPEED)/255
 #define ADCSRA_init 0x83  // AD enable, IRQ off, Prescaler 8
@@ -82,7 +64,7 @@ void jogging()
 // Tests jog port pins and moves steppers
 {
 	uint8_t jog_bits, jog_bits_old, out_bits0, jog_exit, last_sys_state;
-	uint8_t i, limit_state, spindle_bits;
+	uint8_t i, spindle_bits;
 	
 	uint32_t dest_step_rate, step_rate, step_delay; // Step delay after pulse
 	float work_position, mm_per_step;
@@ -243,8 +225,9 @@ void jogging()
 		ADCSRA = ADCSRA_init | (1<<ADIF); //0x93, clear ADIF
 
 		// Get limit pin state
-		limit_state = bit_istrue(LIMIT_PIN,LIMIT_MASK);
-		if (limit_state && reverse_flag) { jog_exit = 1; } // immediate stop on any switch
+		uint8_t bits = LIMIT_PIN;
+		if (bit_isfalse(settings.flags,BITFLAG_INVERT_LIMIT_PINS)) { bits ^= LIMIT_MASK; }
+		if (bit_istrue(bits,LIMIT_MASK) && reverse_flag) { jog_exit = 1; } // immediate stop on any switch
 		
 		jog_bits = (~JOGSW_PIN) & JOGSW_MASK; // active low
 		if (jog_bits == jog_bits_old) { // nothing changed

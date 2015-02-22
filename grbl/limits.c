@@ -95,11 +95,11 @@ void limits_disable()
   ISR(WDT_vect) // Watchdog timer ISR
   {
     WDTCSR &= ~(1<<WDIE); // Disable watchdog timer. 
-    if (sys.state != STATE_ALARM) {  // Ignore if already in alarm state. 
+	if (sys.state != STATE_ALARM) {  // Ignore if already in alarm state. 
       if (!(sys.rt_exec_alarm)) {
         uint8_t bits = LIMIT_PIN;
         // Check limit pin state. 
-        if (bit_istrue(settings.flags,BITFLAG_INVERT_LIMIT_PINS)) { bits ^= LIMIT_MASK; }
+        if (bit_isfalse(settings.flags,BITFLAG_INVERT_LIMIT_PINS)) { bits ^= LIMIT_MASK; }
         if (bits & LIMIT_MASK) {
           mc_reset(); // Initiate system kill.
           bit_true_atomic(sys.rt_exec_alarm, (EXEC_ALARM_HARD_LIMIT|EXEC_CRITICAL_EVENT)); // Indicate hard limit critical event
