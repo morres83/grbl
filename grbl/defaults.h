@@ -97,6 +97,10 @@
 	#define DEFAULT_HOMING_PULLOFF 5.0 // mm
 	#define DEFAULT_Z_GAUGE 10.0 // mm, Z Gauge Block Dicke
 	#define DEFAULT_Z_PULLOFF 0.0 // mm, auto pull back Z after pressing ZERO center btn
+	
+	#define JOG_MIN_SPEED   25    // Hz, min jogging speed, > 10!
+	#define JOG_MAX_SPEED   8000  // Hz, max jogging speed
+	#define JOG_RAMP        5     // Ramp speed inc/dec in µs per loop (higher=faster)
 #endif
 
 #ifdef DEFAULTS_SHERLINE_5400

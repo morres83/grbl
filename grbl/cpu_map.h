@@ -368,10 +368,6 @@
 #define JOG_ZERO        6
 #define JOG_POT         7     // analog pin
 
-#define JOG_MIN_SPEED   25    // Hz, kleinste Geschwindigkeit, > 10!
-#define JOG_MAX_SPEED   8000  // Hz, größte Schrittgeschwindigkeit
-#define JOG_RAMP        5     // Ramp speed inc/dec in µs per loop (higher=faster)
-
 // Define probe switch input pin
 // WARNING: On heise pcb, all pins are occupied. As probe pin SPI SS Pin is used (also connected to MAXIMITE)
 #define PROBE_DDR       DDRB

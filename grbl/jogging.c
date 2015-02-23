@@ -37,7 +37,10 @@ void jog_init() {
 	
 	ADCSRA = ADCSRA_init;
 	ADMUX = ADMUX_init | JOG_POT;     // Kanal, ADLAR =1 (left adjustet, 8-Bit-Result on ADCH)
-
+	
+	ADCSRA |= (1<<ADSC);
+	while (ADCSRA & (1<<ADSC) ) {}         // wait until initial conversion is done
+	(void) ADCH; // ADCH needs to be read one time
 }
 
 void jog_btn_release() {
@@ -146,16 +149,13 @@ void jogging()
 		}
 		return;
 	}
-	
-	ADCSRA = ADCSRA_init | (1<<ADIF); //0x93, clear ADIF
 
 	uint8_t reverse_flag = 0;
 	uint8_t out_bits = 0;
 	uint8_t jog_select = 0;
 	out_bits0 = 0; // no invert anymore!
 	
-	ADCSRA = ADCSRA_init | (1<<ADIF); //0x93, clear ADIF
-	ADCSRA = ADCSRA_init | (1<<ADSC); //0xC3; start conversion
+	ADCSRA |= (1<<ADSC); //start conversion
 	
 	sys.state = STATE_JOG;
 	
@@ -192,12 +192,11 @@ void jogging()
 		jog_select = 2;
 	}
 
+	while (ADCSRA & (1<<ADSC)) {} // wait until conversion is finished
 	dest_step_rate = ADCH;    // set initial dest_step_rate according to analog input
 	dest_step_rate = (dest_step_rate * JOG_SPEED_FAC) + JOG_MIN_SPEED;
 	step_rate = JOG_MIN_SPEED;   // set initial step rate
 	jog_exit = 0;
-	while (!(ADCSRA && (1<<ADIF))) {} // wait until ADIF bit is set
-	ADCSRA = ADCSRA_init; // exit conversion
 	
 	st_wake_up();
 	
@@ -221,8 +220,6 @@ void jogging()
 	
 	for(;;) { // repeat until button/joystick released
 		//    report_realtime_status(); // benötigt viel Zeit!
-		
-		ADCSRA = ADCSRA_init | (1<<ADIF); //0x93, clear ADIF
 
 		// Get limit pin state
 		uint8_t bits = LIMIT_PIN;
@@ -256,7 +253,7 @@ void jogging()
 		}
 		
 
-		ADCSRA = ADCSRA_init | (1<<ADSC); //0xC3; start ADC conversion
+		ADCSRA |= (1<<ADSC); //start ADC conversion
 		// Both direction and step pins appropriately inverted and set. Perform one step
 		STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits & STEP_MASK);
 		delay_us(settings.pulse_microseconds/2);
@@ -294,8 +291,7 @@ void jogging()
 		
 		delay_us(step_delay);
 		
-		while (!(ADCSRA && (1<<ADIF))) {} // wait until ADIF bit is set
-		ADCSRA = ADCSRA_init;     // exit conversion
+		while (ADCSRA & (1<<ADSC)) {} // wait until conversion is finished
 		dest_step_rate = ADCH;    // set next dest_step_rate according to analog input
 		dest_step_rate = (dest_step_rate * JOG_SPEED_FAC) + JOG_MIN_SPEED;
 
