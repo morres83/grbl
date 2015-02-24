@@ -1,7 +1,7 @@
 /*
   jogging.c - code pertaining to  jog switches
   Copyright (c) 2013 Carsten Meyer, cm@ct.de
-  Adjustments for GRBL 0.9 by Matthias Nüßlein, mail@morres83.eu
+  Adjustments for GRBL 0.9, code enhancement and bug fixes by Matthias Nüßlein, mail@morres83.eu
 
   Grbl is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -165,28 +165,27 @@ void jogging()
 		out_bits = out_bits0 ^ (1<<X_STEP_BIT);
 		reverse_flag = 1;
 	}
-	if (jog_bits & (1<<JOGREV_Y_BIT)) { // Y reverse switch on
+	else if (jog_bits & (1<<JOGREV_Y_BIT)) { // Y reverse switch on
 		out_bits0 ^= (1<<Y_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Y_STEP_BIT);
 		reverse_flag = 1;
 		jog_select = 1;
 	}
-	if (jog_bits & (1<<JOGREV_Z_BIT)) { // Z reverse switch on
+	else if (jog_bits & (1<<JOGREV_Z_BIT)) { // Z reverse switch on
 		out_bits0 ^= (1<<Z_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Z_STEP_BIT);
 		// reverse_flag = 1; // positive Z dir!
 		jog_select = 2;
 	}
-	
 	// check for forward switches
-	if (jog_bits & (1<<JOGFWD_X_BIT)) { // X forward switch on
+	else if (jog_bits & (1<<JOGFWD_X_BIT)) { // X forward switch on
 		out_bits = out_bits0 ^ (1<<X_STEP_BIT);
 	}
-	if (jog_bits & (1<<JOGFWD_Y_BIT)) { // Y forward switch on
+	else if (jog_bits & (1<<JOGFWD_Y_BIT)) { // Y forward switch on
 		out_bits = out_bits0 ^ (1<<Y_STEP_BIT);
 		jog_select = 1;
 	}
-	if (jog_bits & (1<<JOGFWD_Z_BIT)) { // Z forward switch on
+	else if (jog_bits & (1<<JOGFWD_Z_BIT)) { // Z forward switch on
 		out_bits = out_bits0 ^ (1<<Z_STEP_BIT);
 		reverse_flag = 1; // positive Z dir!
 		jog_select = 2;
@@ -202,7 +201,8 @@ void jogging()
 	
 	
 	// prepare direction with small delay, direction settle time
-	STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits0 & STEP_MASK);
+	DIRECTION_PORT = (DIRECTION_PORT & ~DIRECTION_MASK) | (out_bits0 & DIRECTION_MASK);
+	//STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits0 & STEP_MASK);
 	delay_us(10);
 	jog_bits_old = jog_bits;
 	i = 0;  // now index for sending position data
@@ -255,10 +255,12 @@ void jogging()
 
 		ADCSRA |= (1<<ADSC); //start ADC conversion
 		// Both direction and step pins appropriately inverted and set. Perform one step
-		STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits & STEP_MASK);
+		STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits & STEP_MASK); //Step pulse on
+		LED_PORT &= ~(1<<LED_ERROR_BIT);//von hier
 		delay_us(settings.pulse_microseconds/2);
 		step_delay = (1000000/step_rate) - settings.pulse_microseconds - 100; // 100 = fixed value for loop time
-		STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits0 & STEP_MASK);
+		LED_PORT |= (1<<LED_ERROR_BIT); //nach hier: 50us
+		STEP_PORT = (STEP_PORT & ~STEP_MASK);// | (out_bits0 & STEP_MASK); //Step pulse off
 		
 	
 		if (reverse_flag) {
