@@ -543,7 +543,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x7ff6
+.text           0x00000000     0x8012
  *(.vectors)
  .vectors       0x00000000       0x70 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5/crtm644.o
                 0x00000000                __vector_default
@@ -570,9 +570,9 @@ END GROUP
  *(.trampolines*)
                 0x00000280                __trampolines_end = .
  *(.progmem*)
- .progmem.data.__c.2352
+ .progmem.data.__c.2351
                 0x00000280        0x7 grbl/jogging.o
- .progmem.data.__c.2350
+ .progmem.data.__c.2349
                 0x00000287        0x4 grbl/jogging.o
  .progmem.data.__c.2725
                 0x0000028b        0x4 grbl/report.o
@@ -927,475 +927,475 @@ END GROUP
  .text.spindle_btn_release
                 0x00000a46       0x14 grbl/jogging.o
                 0x00000a46                spindle_btn_release
- .text.jogging  0x00000a5a      0x5d0 grbl/jogging.o
+ .text.jogging  0x00000a5a      0x5e0 grbl/jogging.o
                 0x00000a5a                jogging
- .text.main     0x0000102a       0x7a grbl/main.o
-                0x0000102a                main
- .text.mc_line  0x000010a4       0x6c grbl/motion_control.o
-                0x000010a4                mc_line
- .text.mc_arc   0x00001110      0x638 grbl/motion_control.o
-                0x00001110                mc_arc
+ .text.main     0x0000103a       0x7a grbl/main.o
+                0x0000103a                main
+ .text.mc_line  0x000010b4       0x6c grbl/motion_control.o
+                0x000010b4                mc_line
+ .text.mc_arc   0x00001120      0x638 grbl/motion_control.o
+                0x00001120                mc_arc
  .text.mc_dwell
-                0x00001748       0xcc grbl/motion_control.o
-                0x00001748                mc_dwell
+                0x00001758       0xcc grbl/motion_control.o
+                0x00001758                mc_dwell
  .text.mc_homing_cycle
-                0x00001814       0x26 grbl/motion_control.o
-                0x00001814                mc_homing_cycle
+                0x00001824       0x26 grbl/motion_control.o
+                0x00001824                mc_homing_cycle
  .text.mc_probe_cycle
-                0x0000183a      0x110 grbl/motion_control.o
-                0x0000183a                mc_probe_cycle
+                0x0000184a      0x110 grbl/motion_control.o
+                0x0000184a                mc_probe_cycle
  .text.mc_reset
-                0x0000194a       0x46 grbl/motion_control.o
-                0x0000194a                mc_reset
- .text.gc_init  0x00001990       0x24 grbl/gcode.o
-                0x00001990                gc_init
+                0x0000195a       0x46 grbl/motion_control.o
+                0x0000195a                mc_reset
+ .text.gc_init  0x000019a0       0x24 grbl/gcode.o
+                0x000019a0                gc_init
  .text.gc_sync_position
-                0x000019b4        0xe grbl/gcode.o
-                0x000019b4                gc_sync_position
+                0x000019c4        0xe grbl/gcode.o
+                0x000019c4                gc_sync_position
  .text.gc_execute_line
-                0x000019c2     0x1594 grbl/gcode.o
-                0x000019c2                gc_execute_line
+                0x000019d2     0x1594 grbl/gcode.o
+                0x000019d2                gc_execute_line
  .text.spindle_stop
-                0x00002f56        0x4 grbl/spindle_control.o
-                0x00002f56                spindle_stop
+                0x00002f66        0x4 grbl/spindle_control.o
+                0x00002f66                spindle_stop
  .text.spindle_init
-                0x00002f5a        0x8 grbl/spindle_control.o
-                0x00002f5a                spindle_init
+                0x00002f6a        0x8 grbl/spindle_control.o
+                0x00002f6a                spindle_init
  .text.spindle_set_state
-                0x00002f62        0xe grbl/spindle_control.o
-                0x00002f62                spindle_set_state
+                0x00002f72        0xe grbl/spindle_control.o
+                0x00002f72                spindle_set_state
  .text.spindle_run
-                0x00002f70       0x32 grbl/spindle_control.o
-                0x00002f70                spindle_run
+                0x00002f80       0x32 grbl/spindle_control.o
+                0x00002f80                spindle_run
  .text.coolant_stop
-                0x00002fa2        0x4 grbl/coolant_control.o
-                0x00002fa2                coolant_stop
+                0x00002fb2        0x4 grbl/coolant_control.o
+                0x00002fb2                coolant_stop
  .text.coolant_init
-                0x00002fa6        0x8 grbl/coolant_control.o
-                0x00002fa6                coolant_init
+                0x00002fb6        0x8 grbl/coolant_control.o
+                0x00002fb6                coolant_init
  .text.coolant_set_state
-                0x00002fae        0xe grbl/coolant_control.o
-                0x00002fae                coolant_set_state
+                0x00002fbe        0xe grbl/coolant_control.o
+                0x00002fbe                coolant_set_state
  .text.coolant_run
-                0x00002fbc       0x1a grbl/coolant_control.o
-                0x00002fbc                coolant_run
+                0x00002fcc       0x1a grbl/coolant_control.o
+                0x00002fcc                coolant_run
  .text.serial_get_rx_buffer_count
-                0x00002fd6       0x16 grbl/serial.o
-                0x00002fd6                serial_get_rx_buffer_count
+                0x00002fe6       0x16 grbl/serial.o
+                0x00002fe6                serial_get_rx_buffer_count
  .text.serial_init
-                0x00002fec       0x2c grbl/serial.o
-                0x00002fec                serial_init
+                0x00002ffc       0x2c grbl/serial.o
+                0x00002ffc                serial_init
  .text.serial_write
-                0x00003018       0x3e grbl/serial.o
-                0x00003018                serial_write
+                0x00003028       0x3e grbl/serial.o
+                0x00003028                serial_write
  .text.__vector_21
-                0x00003056       0x54 grbl/serial.o
-                0x00003056                __vector_21
+                0x00003066       0x54 grbl/serial.o
+                0x00003066                __vector_21
  .text.serial_read
-                0x000030aa       0x28 grbl/serial.o
-                0x000030aa                serial_read
+                0x000030ba       0x28 grbl/serial.o
+                0x000030ba                serial_read
  .text.__vector_20
-                0x000030d2       0xd2 grbl/serial.o
-                0x000030d2                __vector_20
+                0x000030e2       0xd2 grbl/serial.o
+                0x000030e2                __vector_20
  .text.serial_reset_read_buffer
-                0x000031a4        0xa grbl/serial.o
-                0x000031a4                serial_reset_read_buffer
+                0x000031b4        0xa grbl/serial.o
+                0x000031b4                serial_reset_read_buffer
  .text.protocol_execute_realtime
-                0x000031ae      0x2ae grbl/protocol.o
-                0x000031ae                protocol_execute_realtime
+                0x000031be      0x2ba grbl/protocol.o
+                0x000031be                protocol_execute_realtime
  .text.protocol_process
-                0x0000345c      0x116 grbl/protocol.o
-                0x0000345c                protocol_process
+                0x00003478      0x116 grbl/protocol.o
+                0x00003478                protocol_process
  .text.protocol_auto_cycle_start
-                0x00003572       0x12 grbl/protocol.o
-                0x00003572                protocol_auto_cycle_start
+                0x0000358e       0x12 grbl/protocol.o
+                0x0000358e                protocol_auto_cycle_start
  .text.protocol_main_loop
-                0x00003584       0x5c grbl/protocol.o
-                0x00003584                protocol_main_loop
+                0x000035a0       0x5c grbl/protocol.o
+                0x000035a0                protocol_main_loop
  .text.protocol_buffer_synchronize
-                0x000035e0       0x38 grbl/protocol.o
-                0x000035e0                protocol_buffer_synchronize
+                0x000035fc       0x38 grbl/protocol.o
+                0x000035fc                protocol_buffer_synchronize
  .text.st_wake_up
-                0x00003618       0x7e grbl/stepper.o
-                0x00003618                st_wake_up
+                0x00003634       0x7e grbl/stepper.o
+                0x00003634                st_wake_up
  .text.st_go_idle
-                0x00003696       0x5c grbl/stepper.o
-                0x00003696                st_go_idle
+                0x000036b2       0x5c grbl/stepper.o
+                0x000036b2                st_go_idle
  .text.__vector_13
-                0x000036f2      0x42c grbl/stepper.o
-                0x000036f2                __vector_13
+                0x0000370e      0x42c grbl/stepper.o
+                0x0000370e                __vector_13
  .text.__vector_18
-                0x00003b1e       0x2c grbl/stepper.o
-                0x00003b1e                __vector_18
+                0x00003b3a       0x2c grbl/stepper.o
+                0x00003b3a                __vector_18
  .text.st_generate_step_dir_invert_masks
-                0x00003b4a       0x94 grbl/stepper.o
-                0x00003b4a                st_generate_step_dir_invert_masks
+                0x00003b66       0x94 grbl/stepper.o
+                0x00003b66                st_generate_step_dir_invert_masks
  .text.st_reset
-                0x00003bde       0x58 grbl/stepper.o
-                0x00003bde                st_reset
+                0x00003bfa       0x58 grbl/stepper.o
+                0x00003bfa                st_reset
  .text.stepper_init
-                0x00003c36       0x44 grbl/stepper.o
-                0x00003c36                stepper_init
+                0x00003c52       0x44 grbl/stepper.o
+                0x00003c52                stepper_init
  .text.st_update_plan_block_parameters
-                0x00003c7a       0x44 grbl/stepper.o
-                0x00003c7a                st_update_plan_block_parameters
+                0x00003c96       0x44 grbl/stepper.o
+                0x00003c96                st_update_plan_block_parameters
  .text.st_prep_buffer
-                0x00003cbe      0xd58 grbl/stepper.o
-                0x00003cbe                st_prep_buffer
+                0x00003cda      0xd58 grbl/stepper.o
+                0x00003cda                st_prep_buffer
  .text.eeprom_get_char
-                0x00004a16       0x10 grbl/eeprom.o
-                0x00004a16                eeprom_get_char
+                0x00004a32       0x10 grbl/eeprom.o
+                0x00004a32                eeprom_get_char
  .text.eeprom_put_char
-                0x00004a26       0x3e grbl/eeprom.o
-                0x00004a26                eeprom_put_char
+                0x00004a42       0x3e grbl/eeprom.o
+                0x00004a42                eeprom_put_char
  .text.memcpy_to_eeprom_with_checksum
-                0x00004a64       0x8c grbl/eeprom.o
-                0x00004a64                memcpy_to_eeprom_with_checksum
+                0x00004a80       0x8c grbl/eeprom.o
+                0x00004a80                memcpy_to_eeprom_with_checksum
  .text.memcpy_from_eeprom_with_checksum
-                0x00004af0       0x9c grbl/eeprom.o
-                0x00004af0                memcpy_from_eeprom_with_checksum
+                0x00004b0c       0x9c grbl/eeprom.o
+                0x00004b0c                memcpy_from_eeprom_with_checksum
  .text.settings_store_startup_line
-                0x00004b8c       0x14 grbl/settings.o
-                0x00004b8c                settings_store_startup_line
+                0x00004ba8       0x14 grbl/settings.o
+                0x00004ba8                settings_store_startup_line
  .text.settings_store_build_info
-                0x00004ba0       0x10 grbl/settings.o
-                0x00004ba0                settings_store_build_info
+                0x00004bbc       0x10 grbl/settings.o
+                0x00004bbc                settings_store_build_info
  .text.settings_write_coord_data
-                0x00004bb0       0x14 grbl/settings.o
-                0x00004bb0                settings_write_coord_data
+                0x00004bcc       0x14 grbl/settings.o
+                0x00004bcc                settings_write_coord_data
  .text.write_global_settings
-                0x00004bc4       0x1c grbl/settings.o
-                0x00004bc4                write_global_settings
+                0x00004be0       0x1c grbl/settings.o
+                0x00004be0                write_global_settings
  .text.settings_restore_global_settings
-                0x00004be0      0x1ce grbl/settings.o
-                0x00004be0                settings_restore_global_settings
+                0x00004bfc      0x1ce grbl/settings.o
+                0x00004bfc                settings_restore_global_settings
  .text.settings_clear_startup_lines
-                0x00004dae       0x16 grbl/settings.o
-                0x00004dae                settings_clear_startup_lines
+                0x00004dca       0x16 grbl/settings.o
+                0x00004dca                settings_clear_startup_lines
  .text.settings_clear_build_info
-                0x00004dc4        0xc grbl/settings.o
-                0x00004dc4                settings_clear_build_info
+                0x00004de0        0xc grbl/settings.o
+                0x00004de0                settings_clear_build_info
  .text.settings_read_startup_line
-                0x00004dd0       0x3a grbl/settings.o
-                0x00004dd0                settings_read_startup_line
+                0x00004dec       0x3a grbl/settings.o
+                0x00004dec                settings_read_startup_line
  .text.settings_read_build_info
-                0x00004e0a       0x2a grbl/settings.o
-                0x00004e0a                settings_read_build_info
+                0x00004e26       0x2a grbl/settings.o
+                0x00004e26                settings_read_build_info
  .text.settings_read_coord_data
-                0x00004e34       0x42 grbl/settings.o
-                0x00004e34                settings_read_coord_data
+                0x00004e50       0x42 grbl/settings.o
+                0x00004e50                settings_read_coord_data
  .text.read_global_settings
-                0x00004e76       0x2c grbl/settings.o
-                0x00004e76                read_global_settings
+                0x00004e92       0x2c grbl/settings.o
+                0x00004e92                read_global_settings
  .text.settings_store_global_setting
-                0x00004ea2      0x2be grbl/settings.o
-                0x00004ea2                settings_store_global_setting
+                0x00004ebe      0x2be grbl/settings.o
+                0x00004ebe                settings_store_global_setting
  .text.settings_init
-                0x00005160       0x6c grbl/settings.o
-                0x00005160                settings_init
+                0x0000517c       0x6c grbl/settings.o
+                0x0000517c                settings_init
  .text.get_step_pin_mask
-                0x000051cc       0x14 grbl/settings.o
-                0x000051cc                get_step_pin_mask
+                0x000051e8       0x14 grbl/settings.o
+                0x000051e8                get_step_pin_mask
  .text.get_direction_pin_mask
-                0x000051e0       0x14 grbl/settings.o
-                0x000051e0                get_direction_pin_mask
+                0x000051fc       0x14 grbl/settings.o
+                0x000051fc                get_direction_pin_mask
  .text.get_limit_pin_mask
-                0x000051f4       0x14 grbl/settings.o
-                0x000051f4                get_limit_pin_mask
+                0x00005210       0x14 grbl/settings.o
+                0x00005210                get_limit_pin_mask
  .text.planner_recalculate
-                0x00005208      0x260 grbl/planner.o
+                0x00005224      0x260 grbl/planner.o
  .text.plan_reset
-                0x00005468       0x22 grbl/planner.o
-                0x00005468                plan_reset
+                0x00005484       0x22 grbl/planner.o
+                0x00005484                plan_reset
  .text.plan_discard_current_block
-                0x0000548a       0x28 grbl/planner.o
-                0x0000548a                plan_discard_current_block
+                0x000054a6       0x28 grbl/planner.o
+                0x000054a6                plan_discard_current_block
  .text.plan_get_current_block
-                0x000054b2       0x20 grbl/planner.o
-                0x000054b2                plan_get_current_block
+                0x000054ce       0x20 grbl/planner.o
+                0x000054ce                plan_get_current_block
  .text.plan_get_exec_block_exit_speed
-                0x000054d2       0x36 grbl/planner.o
-                0x000054d2                plan_get_exec_block_exit_speed
+                0x000054ee       0x36 grbl/planner.o
+                0x000054ee                plan_get_exec_block_exit_speed
  .text.plan_check_full_buffer
-                0x00005508       0x10 grbl/planner.o
-                0x00005508                plan_check_full_buffer
+                0x00005524       0x10 grbl/planner.o
+                0x00005524                plan_check_full_buffer
  .text.plan_buffer_line
-                0x00005518      0x634 grbl/planner.o
-                0x00005518                plan_buffer_line
+                0x00005534      0x634 grbl/planner.o
+                0x00005534                plan_buffer_line
  .text.plan_sync_position
-                0x00005b4c       0x62 grbl/planner.o
-                0x00005b4c                plan_sync_position
+                0x00005b68       0x62 grbl/planner.o
+                0x00005b68                plan_sync_position
  .text.plan_get_block_buffer_count
-                0x00005bae       0x16 grbl/planner.o
-                0x00005bae                plan_get_block_buffer_count
+                0x00005bca       0x16 grbl/planner.o
+                0x00005bca                plan_get_block_buffer_count
  .text.plan_cycle_reinitialize
-                0x00005bc4       0x12 grbl/planner.o
-                0x00005bc4                plan_cycle_reinitialize
+                0x00005be0       0x12 grbl/planner.o
+                0x00005be0                plan_cycle_reinitialize
  .text.read_float
-                0x00005bd6      0x198 grbl/nuts_bolts.o
-                0x00005bd6                read_float
+                0x00005bf2      0x198 grbl/nuts_bolts.o
+                0x00005bf2                read_float
  .text.delay_ms
-                0x00005d6e       0x18 grbl/nuts_bolts.o
-                0x00005d6e                delay_ms
+                0x00005d8a       0x18 grbl/nuts_bolts.o
+                0x00005d8a                delay_ms
  .text.delay_us
-                0x00005d86       0x84 grbl/nuts_bolts.o
-                0x00005d86                delay_us
- .text.hypot_f  0x00005e0a       0x4e grbl/nuts_bolts.o
-                0x00005e0a                hypot_f
+                0x00005da2       0x84 grbl/nuts_bolts.o
+                0x00005da2                delay_us
+ .text.hypot_f  0x00005e26       0x4e grbl/nuts_bolts.o
+                0x00005e26                hypot_f
  .text.limits_disable
-                0x00005e58       0x16 grbl/limits.o
-                0x00005e58                limits_disable
+                0x00005e74       0x16 grbl/limits.o
+                0x00005e74                limits_disable
  .text.limits_init
-                0x00005e6e       0x30 grbl/limits.o
-                0x00005e6e                limits_init
+                0x00005e8a       0x30 grbl/limits.o
+                0x00005e8a                limits_init
  .text.__vector_5
-                0x00005e9e       0x68 grbl/limits.o
-                0x00005e9e                __vector_5
+                0x00005eba       0x68 grbl/limits.o
+                0x00005eba                __vector_5
  .text.limits_go_home
-                0x00005f06      0x566 grbl/limits.o
-                0x00005f06                limits_go_home
+                0x00005f22      0x566 grbl/limits.o
+                0x00005f22                limits_go_home
  .text.limits_soft_check
-                0x0000646c       0xc2 grbl/limits.o
-                0x0000646c                limits_soft_check
+                0x00006488       0xc2 grbl/limits.o
+                0x00006488                limits_soft_check
  .text.printString
-                0x0000652e       0x1e grbl/print.o
-                0x0000652e                printString
+                0x0000654a       0x1e grbl/print.o
+                0x0000654a                printString
  .text.printPgmString
-                0x0000654c       0x24 grbl/print.o
-                0x0000654c                printPgmString
+                0x00006568       0x24 grbl/print.o
+                0x00006568                printPgmString
  .text.print_uint8_base2
-                0x00006570       0x68 grbl/print.o
-                0x00006570                print_uint8_base2
+                0x0000658c       0x68 grbl/print.o
+                0x0000658c                print_uint8_base2
  .text.print_uint8_base10
-                0x000065d8       0x78 grbl/print.o
-                0x000065d8                print_uint8_base10
+                0x000065f4       0x78 grbl/print.o
+                0x000065f4                print_uint8_base10
  .text.printFloat
-                0x00006650      0x17a grbl/print.o
-                0x00006650                printFloat
+                0x0000666c      0x17a grbl/print.o
+                0x0000666c                printFloat
  .text.printFloat_CoordValue
-                0x000067ca       0x24 grbl/print.o
-                0x000067ca                printFloat_CoordValue
+                0x000067e6       0x24 grbl/print.o
+                0x000067e6                printFloat_CoordValue
  .text.printFloat_RateValue
-                0x000067ee       0x24 grbl/print.o
-                0x000067ee                printFloat_RateValue
+                0x0000680a       0x24 grbl/print.o
+                0x0000680a                printFloat_RateValue
  .text.printFloat_SettingValue
-                0x00006812        0x8 grbl/print.o
-                0x00006812                printFloat_SettingValue
+                0x0000682e        0x8 grbl/print.o
+                0x0000682e                printFloat_SettingValue
  .text.probe_init
-                0x0000681a        0x6 grbl/probe.o
-                0x0000681a                probe_init
+                0x00006836        0x6 grbl/probe.o
+                0x00006836                probe_init
  .text.probe_configure_invert_mask
-                0x00006820       0x24 grbl/probe.o
-                0x00006820                probe_configure_invert_mask
+                0x0000683c       0x24 grbl/probe.o
+                0x0000683c                probe_configure_invert_mask
  .text.probe_get_state
-                0x00006844        0xc grbl/probe.o
-                0x00006844                probe_get_state
+                0x00006860        0xc grbl/probe.o
+                0x00006860                probe_get_state
  .text.probe_state_monitor
-                0x00006850       0x32 grbl/probe.o
-                0x00006850                probe_state_monitor
+                0x0000686c       0x32 grbl/probe.o
+                0x0000686c                probe_state_monitor
  .text.report_status_message
-                0x00006882       0xe2 grbl/report.o
-                0x00006882                report_status_message
+                0x0000689e       0xe2 grbl/report.o
+                0x0000689e                report_status_message
  .text.report_alarm_message
-                0x00006964       0x5a grbl/report.o
-                0x00006964                report_alarm_message
+                0x00006980       0x5a grbl/report.o
+                0x00006980                report_alarm_message
  .text.report_feedback_message
-                0x000069be       0x6e grbl/report.o
-                0x000069be                report_feedback_message
+                0x000069da       0x6e grbl/report.o
+                0x000069da                report_feedback_message
  .text.report_init_message
-                0x00006a2c        0xa grbl/report.o
-                0x00006a2c                report_init_message
+                0x00006a48        0xa grbl/report.o
+                0x00006a48                report_init_message
  .text.report_grbl_help
-                0x00006a36        0xa grbl/report.o
-                0x00006a36                report_grbl_help
+                0x00006a52        0xa grbl/report.o
+                0x00006a52                report_grbl_help
  .text.report_grbl_settings
-                0x00006a40      0x340 grbl/report.o
-                0x00006a40                report_grbl_settings
+                0x00006a5c      0x340 grbl/report.o
+                0x00006a5c                report_grbl_settings
  .text.report_probe_parameters
-                0x00006d80       0x48 grbl/report.o
-                0x00006d80                report_probe_parameters
+                0x00006d9c       0x48 grbl/report.o
+                0x00006d9c                report_probe_parameters
  .text.report_ngc_parameters
-                0x00006dc8      0x136 grbl/report.o
-                0x00006dc8                report_ngc_parameters
+                0x00006de4      0x136 grbl/report.o
+                0x00006de4                report_ngc_parameters
  .text.report_gcode_modes
-                0x00006efe      0x1b0 grbl/report.o
-                0x00006efe                report_gcode_modes
+                0x00006f1a      0x1b0 grbl/report.o
+                0x00006f1a                report_gcode_modes
  .text.report_startup_line
-                0x000070ae       0x36 grbl/report.o
-                0x000070ae                report_startup_line
+                0x000070ca       0x36 grbl/report.o
+                0x000070ca                report_startup_line
  .text.report_build_info
-                0x000070e4       0x22 grbl/report.o
-                0x000070e4                report_build_info
+                0x00007100       0x22 grbl/report.o
+                0x00007100                report_build_info
  .text.report_realtime_status
-                0x00007106      0x204 grbl/report.o
-                0x00007106                report_realtime_status
+                0x00007122      0x204 grbl/report.o
+                0x00007122                report_realtime_status
  .text.system_init
-                0x0000730a       0x22 grbl/system.o
-                0x0000730a                system_init
+                0x00007326       0x22 grbl/system.o
+                0x00007326                system_init
  .text.__vector_6
-                0x0000732c       0x76 grbl/system.o
-                0x0000732c                __vector_6
+                0x00007348       0x76 grbl/system.o
+                0x00007348                __vector_6
  .text.system_check_safety_door_ajar
-                0x000073a2        0x4 grbl/system.o
-                0x000073a2                system_check_safety_door_ajar
+                0x000073be        0x4 grbl/system.o
+                0x000073be                system_check_safety_door_ajar
  .text.system_execute_startup
-                0x000073a6       0x42 grbl/system.o
-                0x000073a6                system_execute_startup
+                0x000073c2       0x42 grbl/system.o
+                0x000073c2                system_execute_startup
  .text.system_execute_line
-                0x000073e8      0x310 grbl/system.o
-                0x000073e8                system_execute_line
+                0x00007404      0x310 grbl/system.o
+                0x00007404                system_execute_line
  .text.system_convert_axis_steps_to_mpos
-                0x000076f8       0x38 grbl/system.o
-                0x000076f8                system_convert_axis_steps_to_mpos
+                0x00007714       0x38 grbl/system.o
+                0x00007714                system_convert_axis_steps_to_mpos
  .text.system_convert_array_steps_to_mpos
-                0x00007730       0x34 grbl/system.o
-                0x00007730                system_convert_array_steps_to_mpos
+                0x0000774c       0x34 grbl/system.o
+                0x0000774c                system_convert_array_steps_to_mpos
  .text.avr-libc.fplib
-                0x00007764        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(addsf3.o)
-                0x00007764                __subsf3
-                0x00007766                __addsf3
+                0x00007780        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(addsf3.o)
+                0x00007780                __subsf3
+                0x00007782                __addsf3
  .text.avr-libc.fplib
-                0x0000776e       0xc0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(addsf3x.o)
-                0x00007788                __addsf3x
+                0x0000778a       0xc0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(addsf3x.o)
+                0x000077a4                __addsf3x
  .text.avr-libc.fplib
-                0x0000782e       0x74 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(atan2.o)
-                0x0000784c                atan2
+                0x0000784a       0x74 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(atan2.o)
+                0x00007868                atan2
  .text.avr-libc.fplib
-                0x000078a2       0x50 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(atan.o)
-                0x000078a2                atan
+                0x000078be       0x50 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(atan.o)
+                0x000078be                atan
  .text.avr-libc.fplib
-                0x000078f2       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(ceil.o)
-                0x000078f2                ceil
+                0x0000790e       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(ceil.o)
+                0x0000790e                ceil
  .text.avr-libc.fplib
-                0x00007918        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
-                0x00007918                __nesf2
-                0x00007918                __eqsf2
-                0x00007918                __cmpsf2
-                0x00007918                __ltsf2
-                0x00007918                __lesf2
+                0x00007934        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(cmpsf2.o)
+                0x00007934                __nesf2
+                0x00007934                __eqsf2
+                0x00007934                __cmpsf2
+                0x00007934                __ltsf2
+                0x00007934                __lesf2
  .text.avr-libc.fplib
-                0x00007920        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(cos.o)
-                0x00007920                cos
+                0x0000793c        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(cos.o)
+                0x0000793c                cos
  .text.avr-libc.fplib
-                0x00007926        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(divsf3.o)
-                0x00007926                __divsf3
+                0x00007942        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(divsf3.o)
+                0x00007942                __divsf3
  .text.avr-libc.fplib
-                0x0000792a       0xcc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(divsf3x.o)
-                0x00007940                __divsf3x
-                0x00007944                __divsf3_pse
+                0x00007946       0xcc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(divsf3x.o)
+                0x0000795c                __divsf3x
+                0x00007960                __divsf3_pse
  .text.avr-libc.fplib
-                0x000079f6        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
-                0x000079f6                __fixsfsi
+                0x00007a12        0xa c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fixsfsi.o)
+                0x00007a12                __fixsfsi
  .text.avr-libc.fplib
-                0x00007a00       0x58 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
-                0x00007a00                __fixunssfsi
+                0x00007a1c       0x58 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fixunssfsi.o)
+                0x00007a1c                __fixunssfsi
  .text.avr-libc.fplib
-                0x00007a58       0x7a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(floatsisf.o)
-                0x00007a58                __floatunsisf
-                0x00007a5c                __floatsisf
+                0x00007a74       0x7a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(floatsisf.o)
+                0x00007a74                __floatunsisf
+                0x00007a78                __floatsisf
  .text.avr-libc.fplib
-                0x00007ad2       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(floor.o)
-                0x00007ad2                floor
+                0x00007aee       0x26 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(floor.o)
+                0x00007aee                floor
  .text.avr-libc.fplib
-                0x00007af8       0x48 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
-                0x00007af8                __fp_cmp
+                0x00007b14       0x48 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_cmp.o)
+                0x00007b14                __fp_cmp
  .text.avr-libc.fplib
-                0x00007b40        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_inf.o)
-                0x00007b40                __fp_inf
+                0x00007b5c        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_inf.o)
+                0x00007b5c                __fp_inf
  .text.avr-libc.fplib
-                0x00007b4c       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_mintl.o)
-                0x00007b4c                __fp_mintl
+                0x00007b68       0x36 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_mintl.o)
+                0x00007b68                __fp_mintl
  .text.avr-libc.fplib
-                0x00007b82       0x1c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_mpack.o)
-                0x00007b82                __fp_mpack
-                0x00007b86                __fp_mpack_finite
+                0x00007b9e       0x1c c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_mpack.o)
+                0x00007b9e                __fp_mpack
+                0x00007ba2                __fp_mpack_finite
  .text.avr-libc.fplib
-                0x00007b9e        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_nan.o)
-                0x00007b9e                __fp_nan
+                0x00007bba        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_nan.o)
+                0x00007bba                __fp_nan
  .text.avr-libc.fplib
-                0x00007ba4       0x4a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_powser.o)
-                0x00007ba4                __fp_powser
+                0x00007bc0       0x4a c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_powser.o)
+                0x00007bc0                __fp_powser
  .text.avr-libc.fplib
-                0x00007bee        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
-                0x00007bee                __fp_pscA
+                0x00007c0a        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_pscA.o)
+                0x00007c0a                __fp_pscA
  .text.avr-libc.fplib
-                0x00007bfc        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
-                0x00007bfc                __fp_pscB
+                0x00007c18        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_pscB.o)
+                0x00007c18                __fp_pscB
  .text.avr-libc.fplib
-                0x00007c0a       0x50 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_rempio2.o)
-                0x00007c0c                __fp_rempio2
+                0x00007c26       0x50 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_rempio2.o)
+                0x00007c28                __fp_rempio2
  .text.avr-libc.fplib
-                0x00007c5a       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_round.o)
-                0x00007c5a                __fp_round
+                0x00007c76       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_round.o)
+                0x00007c76                __fp_round
  .text.avr-libc.fplib
-                0x00007c7c       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_sinus.o)
-                0x00007c7c                __fp_sinus
+                0x00007c98       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_sinus.o)
+                0x00007c98                __fp_sinus
  .text.avr-libc.fplib
-                0x00007c9e       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_split3.o)
-                0x00007c9e                __fp_split3
-                0x00007cae                __fp_splitA
+                0x00007cba       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_split3.o)
+                0x00007cba                __fp_split3
+                0x00007cca                __fp_splitA
  .text.avr-libc.fplib
-                0x00007ce2       0x2e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_trunc.o)
-                0x00007ce2                __fp_trunc
+                0x00007cfe       0x2e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_trunc.o)
+                0x00007cfe                __fp_trunc
  .text.avr-libc.fplib
-                0x00007d10        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_zero.o)
-                0x00007d10                __fp_zero
-                0x00007d12                __fp_szero
+                0x00007d2c        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_zero.o)
+                0x00007d2c                __fp_zero
+                0x00007d2e                __fp_szero
  .text.avr-libc.fplib
-                0x00007d1e        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(gesf2.o)
-                0x00007d1e                __gesf2
-                0x00007d1e                __gtsf2
+                0x00007d3a        0x8 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(gesf2.o)
+                0x00007d3a                __gesf2
+                0x00007d3a                __gtsf2
  .text.avr-libc.fplib
-                0x00007d26        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(inverse.o)
-                0x00007d26                inverse
+                0x00007d42        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(inverse.o)
+                0x00007d42                inverse
  .text.avr-libc.fplib
-                0x00007d34       0x60 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(lround.o)
-                0x00007d34                lround
+                0x00007d50       0x60 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(lround.o)
+                0x00007d50                lround
  .text.avr-libc.fplib
-                0x00007d94        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(mulsf3.o)
-                0x00007d94                __mulsf3
+                0x00007db0        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(mulsf3.o)
+                0x00007db0                __mulsf3
  .text.avr-libc.fplib
-                0x00007d98       0xc2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
-                0x00007dac                __mulsf3x
-                0x00007db0                __mulsf3_pse
+                0x00007db4       0xc2 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(mulsf3x.o)
+                0x00007dc8                __mulsf3x
+                0x00007dcc                __mulsf3_pse
  .text.avr-libc.fplib
-                0x00007e5a       0x40 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(round.o)
-                0x00007e5a                round
+                0x00007e76       0x40 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(round.o)
+                0x00007e76                round
  .text.avr-libc.fplib
-                0x00007e9a        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(sin.o)
-                0x00007e9a                sin
+                0x00007eb6        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(sin.o)
+                0x00007eb6                sin
  .text.avr-libc.fplib
-                0x00007ea6       0x84 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(sqrt.o)
-                0x00007eae                sqrt
+                0x00007ec2       0x84 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(sqrt.o)
+                0x00007eca                sqrt
  .text.avr-libc.fplib
-                0x00007f2a        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(square.o)
-                0x00007f2a                square
+                0x00007f46        0x6 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(square.o)
+                0x00007f46                square
  .text.avr-libc.fplib
-                0x00007f30        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(trunc.o)
-                0x00007f30                trunc
+                0x00007f4c        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(trunc.o)
+                0x00007f4c                trunc
  .text.avr-libc.fplib
-                0x00007f3e        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_norm2.o)
-                0x00007f3e                __fp_norm2
+                0x00007f5a        0xe c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_norm2.o)
+                0x00007f5a                __fp_norm2
  .text.avr-libc.fplib
-                0x00007f4c       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_powsodd.o)
-                0x00007f4c                __fp_powsodd
+                0x00007f68       0x22 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/../../../../avr/lib/avr5\libm.a(fp_powsodd.o)
+                0x00007f68                __fp_powsodd
  .text.libgcc.div
-                0x00007f6e       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodsi4.o)
-                0x00007f6e                __udivmodsi4
- .text.libgcc   0x00007fb2        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
-                0x00007fb2                __tablejump2__
-                0x00007fb6                __tablejump__
+                0x00007f8a       0x44 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_udivmodsi4.o)
+                0x00007f8a                __udivmodsi4
+ .text.libgcc   0x00007fce        0xc c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_tablejump.o)
+                0x00007fce                __tablejump2__
+                0x00007fd2                __tablejump__
  .text.libgcc.mul
-                0x00007fbe       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_umulhisi3.o)
-                0x00007fbe                __umulhisi3
+                0x00007fda       0x1e c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_umulhisi3.o)
+                0x00007fda                __umulhisi3
  .text.libgcc.mul
-                0x00007fdc       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_muluhisi3.o)
-                0x00007fdc                __muluhisi3
-                0x00007ff2                . = ALIGN (0x2)
+                0x00007ff8       0x16 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_muluhisi3.o)
+                0x00007ff8                __muluhisi3
+                0x0000800e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00007ff2        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
-                0x00007ff2                _exit
-                0x00007ff2                exit
+ .fini9         0x0000800e        0x0 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+                0x0000800e                _exit
+                0x0000800e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -1414,11 +1414,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00007ff2        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
+ .fini0         0x0000800e        0x4 c:/program files (x86)/atmel/atmel toolchain/avr8 gcc/native/3.4.1061/avr8-gnu-toolchain/bin/../lib/gcc/avr/4.8.1/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00007ff6                _etext = .
+                0x00008012                _etext = .
 
-.data           0x00800100        0x0 load address 0x00007ff6
+.data           0x00800100        0x0 load address 0x00008012
                 0x00800100                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -1495,8 +1495,8 @@ END GROUP
  COMMON         0x00800954        0x1 grbl/probe.o
                 0x00800954                probe_invert_mask
                 0x00800955                PROVIDE (__bss_end, .)
-                0x00007ff6                __data_load_start = LOADADDR (.data)
-                0x00007ff6                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x00008012                __data_load_start = LOADADDR (.data)
+                0x00008012                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800955        0x0
                 0x00800955                PROVIDE (__noinit_start, .)
@@ -1621,68 +1621,68 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x879b
+.debug_info     0x00000000     0x8792
  *(.debug_info .gnu.linkonce.wi.*)
- .debug_info    0x00000000      0x8a5 grbl/jogging.o
- .debug_info    0x000008a5      0x2e8 grbl/main.o
- .debug_info    0x00000b8d      0xaf1 grbl/motion_control.o
- .debug_info    0x0000167e      0xc65 grbl/gcode.o
- .debug_info    0x000022e3      0x231 grbl/spindle_control.o
- .debug_info    0x00002514      0x201 grbl/coolant_control.o
- .debug_info    0x00002715      0x3c8 grbl/serial.o
- .debug_info    0x00002add      0x8e4 grbl/protocol.o
- .debug_info    0x000033c1      0xa4c grbl/stepper.o
- .debug_info    0x00003e0d      0x227 grbl/eeprom.o
- .debug_info    0x00004034      0x96b grbl/settings.o
- .debug_info    0x0000499f      0x83a grbl/planner.o
- .debug_info    0x000051d9      0x3b4 grbl/nuts_bolts.o
- .debug_info    0x0000558d      0x74b grbl/limits.o
- .debug_info    0x00005cd8      0x642 grbl/print.o
- .debug_info    0x0000631a      0x31b grbl/probe.o
- .debug_info    0x00006635     0x1900 grbl/report.o
- .debug_info    0x00007f35      0x866 grbl/system.o
+ .debug_info    0x00000000      0x89b grbl/jogging.o
+ .debug_info    0x0000089b      0x2e8 grbl/main.o
+ .debug_info    0x00000b83      0xaf1 grbl/motion_control.o
+ .debug_info    0x00001674      0xc65 grbl/gcode.o
+ .debug_info    0x000022d9      0x231 grbl/spindle_control.o
+ .debug_info    0x0000250a      0x201 grbl/coolant_control.o
+ .debug_info    0x0000270b      0x3c8 grbl/serial.o
+ .debug_info    0x00002ad3      0x8e5 grbl/protocol.o
+ .debug_info    0x000033b8      0xa4c grbl/stepper.o
+ .debug_info    0x00003e04      0x227 grbl/eeprom.o
+ .debug_info    0x0000402b      0x96b grbl/settings.o
+ .debug_info    0x00004996      0x83a grbl/planner.o
+ .debug_info    0x000051d0      0x3b4 grbl/nuts_bolts.o
+ .debug_info    0x00005584      0x74b grbl/limits.o
+ .debug_info    0x00005ccf      0x642 grbl/print.o
+ .debug_info    0x00006311      0x31b grbl/probe.o
+ .debug_info    0x0000662c     0x1900 grbl/report.o
+ .debug_info    0x00007f2c      0x866 grbl/system.o
 
-.debug_abbrev   0x00000000     0x2085
+.debug_abbrev   0x00000000     0x2087
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x199 grbl/jogging.o
- .debug_abbrev  0x00000199       0xcb grbl/main.o
- .debug_abbrev  0x00000264      0x2a4 grbl/motion_control.o
- .debug_abbrev  0x00000508      0x22e grbl/gcode.o
- .debug_abbrev  0x00000736      0x135 grbl/spindle_control.o
- .debug_abbrev  0x0000086b      0x126 grbl/coolant_control.o
- .debug_abbrev  0x00000991      0x17b grbl/serial.o
- .debug_abbrev  0x00000b0c      0x20a grbl/protocol.o
- .debug_abbrev  0x00000d16      0x262 grbl/stepper.o
- .debug_abbrev  0x00000f78       0xfd grbl/eeprom.o
- .debug_abbrev  0x00001075      0x26a grbl/settings.o
- .debug_abbrev  0x000012df      0x2e6 grbl/planner.o
- .debug_abbrev  0x000015c5      0x150 grbl/nuts_bolts.o
- .debug_abbrev  0x00001715      0x21f grbl/limits.o
- .debug_abbrev  0x00001934      0x1b2 grbl/print.o
- .debug_abbrev  0x00001ae6      0x11b grbl/probe.o
- .debug_abbrev  0x00001c01      0x258 grbl/report.o
- .debug_abbrev  0x00001e59      0x22c grbl/system.o
+ .debug_abbrev  0x00000000      0x19b grbl/jogging.o
+ .debug_abbrev  0x0000019b       0xcb grbl/main.o
+ .debug_abbrev  0x00000266      0x2a4 grbl/motion_control.o
+ .debug_abbrev  0x0000050a      0x22e grbl/gcode.o
+ .debug_abbrev  0x00000738      0x135 grbl/spindle_control.o
+ .debug_abbrev  0x0000086d      0x126 grbl/coolant_control.o
+ .debug_abbrev  0x00000993      0x17b grbl/serial.o
+ .debug_abbrev  0x00000b0e      0x20a grbl/protocol.o
+ .debug_abbrev  0x00000d18      0x262 grbl/stepper.o
+ .debug_abbrev  0x00000f7a       0xfd grbl/eeprom.o
+ .debug_abbrev  0x00001077      0x26a grbl/settings.o
+ .debug_abbrev  0x000012e1      0x2e6 grbl/planner.o
+ .debug_abbrev  0x000015c7      0x150 grbl/nuts_bolts.o
+ .debug_abbrev  0x00001717      0x21f grbl/limits.o
+ .debug_abbrev  0x00001936      0x1b2 grbl/print.o
+ .debug_abbrev  0x00001ae8      0x11b grbl/probe.o
+ .debug_abbrev  0x00001c03      0x258 grbl/report.o
+ .debug_abbrev  0x00001e5b      0x22c grbl/system.o
 
-.debug_line     0x00000000     0x2968
+.debug_line     0x00000000     0x29a1
  *(.debug_line .debug_line.* .debug_line_end)
- .debug_line    0x00000000      0x278 grbl/jogging.o
- .debug_line    0x00000278      0x1b2 grbl/main.o
- .debug_line    0x0000042a      0x2fc grbl/motion_control.o
- .debug_line    0x00000726      0x4ae grbl/gcode.o
- .debug_line    0x00000bd4      0x10b grbl/spindle_control.o
- .debug_line    0x00000cdf      0x108 grbl/coolant_control.o
- .debug_line    0x00000de7      0x197 grbl/serial.o
- .debug_line    0x00000f7e      0x291 grbl/protocol.o
- .debug_line    0x0000120f      0x348 grbl/stepper.o
- .debug_line    0x00001557      0x13b grbl/eeprom.o
- .debug_line    0x00001692      0x2f0 grbl/settings.o
- .debug_line    0x00001982      0x30e grbl/planner.o
- .debug_line    0x00001c90      0x201 grbl/nuts_bolts.o
- .debug_line    0x00001e91      0x235 grbl/limits.o
- .debug_line    0x000020c6      0x227 grbl/print.o
- .debug_line    0x000022ed      0x10c grbl/probe.o
- .debug_line    0x000023f9      0x2ef grbl/report.o
- .debug_line    0x000026e8      0x280 grbl/system.o
+ .debug_line    0x00000000      0x2a7 grbl/jogging.o
+ .debug_line    0x000002a7      0x1b2 grbl/main.o
+ .debug_line    0x00000459      0x2fc grbl/motion_control.o
+ .debug_line    0x00000755      0x4ae grbl/gcode.o
+ .debug_line    0x00000c03      0x10b grbl/spindle_control.o
+ .debug_line    0x00000d0e      0x108 grbl/coolant_control.o
+ .debug_line    0x00000e16      0x197 grbl/serial.o
+ .debug_line    0x00000fad      0x29b grbl/protocol.o
+ .debug_line    0x00001248      0x348 grbl/stepper.o
+ .debug_line    0x00001590      0x13b grbl/eeprom.o
+ .debug_line    0x000016cb      0x2f0 grbl/settings.o
+ .debug_line    0x000019bb      0x30e grbl/planner.o
+ .debug_line    0x00001cc9      0x201 grbl/nuts_bolts.o
+ .debug_line    0x00001eca      0x235 grbl/limits.o
+ .debug_line    0x000020ff      0x227 grbl/print.o
+ .debug_line    0x00002326      0x10c grbl/probe.o
+ .debug_line    0x00002432      0x2ef grbl/report.o
+ .debug_line    0x00002721      0x280 grbl/system.o
 
 .debug_frame    0x00000000     0x1238
  *(.debug_frame)
@@ -1744,25 +1744,25 @@ END GROUP
  .debug_str     0x00001713       0x27 grbl/system.o
                                 0x593 (size before relaxing)
 
-.debug_loc      0x00000000     0x5f5e
+.debug_loc      0x00000000     0x5e7f
  *(.debug_loc)
- .debug_loc     0x00000000      0x563 grbl/jogging.o
- .debug_loc     0x00000563      0xa40 grbl/motion_control.o
- .debug_loc     0x00000fa3      0x9cf grbl/gcode.o
- .debug_loc     0x00001972      0x136 grbl/spindle_control.o
- .debug_loc     0x00001aa8       0x6f grbl/coolant_control.o
- .debug_loc     0x00001b17      0x258 grbl/serial.o
- .debug_loc     0x00001d6f      0x2c4 grbl/protocol.o
- .debug_loc     0x00002033      0x8bd grbl/stepper.o
- .debug_loc     0x000028f0      0x46b grbl/eeprom.o
- .debug_loc     0x00002d5b      0x9c9 grbl/settings.o
- .debug_loc     0x00003724      0x71b grbl/planner.o
- .debug_loc     0x00003e3f      0x65f grbl/nuts_bolts.o
- .debug_loc     0x0000449e      0x764 grbl/limits.o
- .debug_loc     0x00004c02      0x809 grbl/print.o
- .debug_loc     0x0000540b       0x21 grbl/probe.o
- .debug_loc     0x0000542c      0x659 grbl/report.o
- .debug_loc     0x00005a85      0x4d9 grbl/system.o
+ .debug_loc     0x00000000      0x484 grbl/jogging.o
+ .debug_loc     0x00000484      0xa40 grbl/motion_control.o
+ .debug_loc     0x00000ec4      0x9cf grbl/gcode.o
+ .debug_loc     0x00001893      0x136 grbl/spindle_control.o
+ .debug_loc     0x000019c9       0x6f grbl/coolant_control.o
+ .debug_loc     0x00001a38      0x258 grbl/serial.o
+ .debug_loc     0x00001c90      0x2c4 grbl/protocol.o
+ .debug_loc     0x00001f54      0x8bd grbl/stepper.o
+ .debug_loc     0x00002811      0x46b grbl/eeprom.o
+ .debug_loc     0x00002c7c      0x9c9 grbl/settings.o
+ .debug_loc     0x00003645      0x71b grbl/planner.o
+ .debug_loc     0x00003d60      0x65f grbl/nuts_bolts.o
+ .debug_loc     0x000043bf      0x764 grbl/limits.o
+ .debug_loc     0x00004b23      0x809 grbl/print.o
+ .debug_loc     0x0000532c       0x21 grbl/probe.o
+ .debug_loc     0x0000534d      0x659 grbl/report.o
+ .debug_loc     0x000059a6      0x4d9 grbl/system.o
 
 .debug_macinfo
  *(.debug_macinfo)
