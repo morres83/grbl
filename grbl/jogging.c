@@ -74,12 +74,12 @@ void jogging()
 
 	switch (sys.state) {
 		case STATE_CYCLE: case STATE_HOMING:
-		LED_PORT |= (1<<LED_ERROR_BIT);
-		return;
+		//LED_PORT |= (1<<LED_ERROR_BIT);
+			return;
 		case STATE_ALARM: case STATE_SAFETY_DOOR:
-		LED_PORT &= ~(1<<LED_ERROR_BIT);  break;
-		default:
-		LED_PORT |= (1<<LED_ERROR_BIT);
+			break;
+		//default:
+		//LED_PORT |= (1<<LED_ERROR_BIT);
 	}
 	last_sys_state = sys.state;
 
@@ -197,6 +197,12 @@ void jogging()
 	step_rate = JOG_MIN_SPEED;   // set initial step rate
 	jog_exit = 0;
 	
+	uint8_t bits = LIMIT_PIN;
+	if (bit_isfalse(settings.flags,BITFLAG_INVERT_LIMIT_PINS)) { bits ^= LIMIT_MASK; }
+	if (bit_istrue(bits,LIMIT_MASK) && reverse_flag) {
+		sys.state = last_sys_state;
+		return;
+	} // do not move towards a limit switch if either one is hit already
 	st_wake_up();
 	
 	
@@ -222,7 +228,7 @@ void jogging()
 		//    report_realtime_status(); // benötigt viel Zeit!
 
 		// Get limit pin state
-		uint8_t bits = LIMIT_PIN;
+		bits = LIMIT_PIN;
 		if (bit_isfalse(settings.flags,BITFLAG_INVERT_LIMIT_PINS)) { bits ^= LIMIT_MASK; }
 		if (bit_istrue(bits,LIMIT_MASK) && reverse_flag) { jog_exit = 1; } // immediate stop on any switch
 		
@@ -242,7 +248,6 @@ void jogging()
 			else { jog_exit = 1; } // finished to stop and exit
 		}
 		
-		
 		// stop and exit if done
 		if (jog_exit || (sys.rt_exec_state & EXEC_RESET)) {
 			st_go_idle();
@@ -256,12 +261,10 @@ void jogging()
 		ADCSRA |= (1<<ADSC); //start ADC conversion
 		// Both direction and step pins appropriately inverted and set. Perform one step
 		STEP_PORT = (STEP_PORT & ~STEP_MASK) | (out_bits & STEP_MASK); //Step pulse on
-		LED_PORT &= ~(1<<LED_ERROR_BIT);//von hier
-		delay_us(settings.pulse_microseconds/2);
-		step_delay = (1000000/step_rate) - settings.pulse_microseconds - 100; // 100 = fixed value for loop time
-		LED_PORT |= (1<<LED_ERROR_BIT); //nach hier: 50us
+		delay_us(settings.pulse_microseconds>>1); //seems okay for little step  pulses
 		STEP_PORT = (STEP_PORT & ~STEP_MASK);// | (out_bits0 & STEP_MASK); //Step pulse off
 		
+		step_delay = (1000000/step_rate) - settings.pulse_microseconds - 100; // 100 = fixed value for loop time; this formula needs 30us! on my 18.432 MHz chrystal
 	
 		if (reverse_flag) {
 			sys.position[jog_select]--;       // sys.position ist in Steps!

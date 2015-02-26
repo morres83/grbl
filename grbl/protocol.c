@@ -210,7 +210,10 @@ void protocol_execute_realtime()
     // the source of the error to the user. If critical, Grbl disables by entering an infinite
     // loop until system reset/abort.
     sys.state = STATE_ALARM; // Set system alarm state
-    if (rt_exec & EXEC_ALARM_HARD_LIMIT) {
+	#ifdef LED_PRESENT
+	LED_PORT &= ~(1<<LED_ERROR_BIT);
+    #endif
+	if (rt_exec & EXEC_ALARM_HARD_LIMIT) {
       report_alarm_message(ALARM_HARD_LIMIT_ERROR); 
     } else if (rt_exec & EXEC_ALARM_SOFT_LIMIT) {
       report_alarm_message(ALARM_SOFT_LIMIT_ERROR);
@@ -234,7 +237,11 @@ void protocol_execute_realtime()
     bit_false_atomic(sys.rt_exec_alarm,0xFF); // Clear all alarm flags
   }
   
-  // Check amd execute realtime commands
+  #ifdef LED_PRESENT
+  if (sys.state != STATE_ALARM) LED_PORT |= (1<<LED_ERROR_BIT);
+  #endif
+  
+  // Check and execute realtime commands
   rt_exec = sys.rt_exec_state; // Copy volatile sys.rt_exec_state.
   if (rt_exec) { // Enter only if any bit flag is true
   
