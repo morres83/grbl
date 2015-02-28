@@ -22,8 +22,8 @@
 #define grbl_h
 
 // Grbl versioning system
-#define GRBL_VERSION "0.9i"
-#define GRBL_VERSION_BUILD "20150223"
+#define GRBL_VERSION "0.9i/morres83/GRBL-JOG"
+#define GRBL_VERSION_BUILD "20150227"
 
 // Define standard libraries used by Grbl.
 #include <avr/io.h>
@@ -58,5 +58,6 @@
 #include "serial.h"
 #include "spindle_control.h"
 #include "stepper.h"
+#include "jogging.h"
 
 #endif

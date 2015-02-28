@@ -91,6 +91,8 @@ typedef struct {
   float homing_seek_rate;
   uint16_t homing_debounce_delay;
   float homing_pulloff;
+  float z_zero_pulloff;
+  float z_zero_gauge;
 } settings_t;
 extern settings_t settings;
 

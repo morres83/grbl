@@ -33,7 +33,9 @@ void spindle_init()
   #else
     SPINDLE_ENABLE_DDR |= (1<<SPINDLE_ENABLE_BIT); // Configure as output pin.
   #endif
-  SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT); // Configure as output pin.
+  #ifdef SPINDLE_DIRECTION_PRESENT
+    SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT); // Configure as output pin.
+  #endif
   spindle_stop();
 }
 
@@ -60,12 +62,13 @@ void spindle_set_state(uint8_t state, float rpm)
     spindle_stop();
 
   } else {
-
+	#ifdef SPINDLE_DIRECTION_PRESENT	
     if (state == SPINDLE_ENABLE_CW) {
       SPINDLE_DIRECTION_PORT &= ~(1<<SPINDLE_DIRECTION_BIT);
     } else {
       SPINDLE_DIRECTION_PORT |= (1<<SPINDLE_DIRECTION_BIT);
     }
+	#endif
 
     #ifdef VARIABLE_SPINDLE
       // TODO: Install the optional capability for frequency-based output for servos.

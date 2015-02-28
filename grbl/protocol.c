@@ -44,12 +44,80 @@ static void protocol_execute_line(char *line)
   } else if (sys.state == STATE_ALARM) {
     // Everything else is gcode. Block if in alarm mode.
     report_status_message(STATUS_ALARM_LOCK);
-
+  } else if (sys.state == STATE_JOG) {
+	// GCode shall be ignored as long as jogging is ongoing
+	report_status_message(STATUS_JOG_ONGOING_LOCK);
   } else {
     // Parse and execute g-code block!
     report_status_message(gc_execute_line(line));
   }
 }
+
+void protocol_process() { //Extracted from main_loop function to use it while in Jogging State
+	static uint8_t iscomment = false;
+	static uint8_t char_counter = 0;
+	uint8_t c;
+		// Process one line of incoming serial data, as the data becomes available. Performs an
+		// initial filtering by removing spaces and comments and capitalizing all letters.
+	
+		// NOTE: While comment, spaces, and block delete(if supported) handling should technically
+		// be done in the g-code parser, doing it here helps compress the incoming data into Grbl's
+		// line buffer, which is limited in size. The g-code standard actually states a line can't
+		// exceed 256 characters, but the Arduino Uno does not have the memory space for this.
+		// With a better processor, it would be very easy to pull this initial parsing out as a
+		// seperate task to be shared by the g-code parser and Grbl's system commands.
+	
+	while((c = serial_read()) != SERIAL_NO_DATA) {
+		if ((c == '\n') || (c == '\r')) { // End of line reached
+			line[char_counter] = 0; // Set string termination character.
+			protocol_execute_line(line); // Line is complete. Execute it!
+			iscomment = false;
+			char_counter = 0;
+			} else {
+			if (iscomment) {
+				// Throw away all comment characters
+				if (c == ')') {
+				// End of comment. Resume line.
+				iscomment = false;
+				}
+			} else {
+			if (c <= ' ') {
+				// Throw away whitepace and control characters
+			} else if (c == '/') {
+				// Block delete NOT SUPPORTED. Ignore character.
+				// NOTE: If supported, would simply need to check the system if block delete is enabled.
+			} else if (c == '(') {
+				// Enable comments flag and ignore all characters until ')' or EOL.
+				// NOTE: This doesn't follow the NIST definition exactly, but is good enough for now.
+				// In the future, we could simply remove the items within the comments, but retain the
+				// comment control characters, so that the g-code parser can error-check it.
+				iscomment = true;
+				// } else if (c == ';') {
+				// Comment character to EOL NOT SUPPORTED. LinuxCNC definition. Not NIST.
+				
+				// TODO: Install '%' feature
+				// } else if (c == '%') {
+				// Program start-end percent sign NOT SUPPORTED.
+				// NOTE: This maybe installed to tell Grbl when a program is running vs manual input,
+				// where, during a program, the system auto-cycle start will continue to execute
+				// everything until the next '%' sign. This will help fix resuming issues with certain
+				// functions that empty the planner buffer to execute its task on-time.
+	
+				} else if (char_counter >= (LINE_BUFFER_SIZE-1)) {
+				// Detect line buffer overflow. Report error and reset line buffer.
+					report_status_message(STATUS_OVERFLOW);
+					iscomment = false;
+					char_counter = 0;
+				} else if (c >= 'a' && c <= 'z') { // Uppercase lowercase
+					line[char_counter++] = c-'a'+'A';
+				} else {
+					line[char_counter++] = c;
+				}
+			}
+		}
+	}
+}
+
 
 
 /* 
@@ -82,77 +150,15 @@ void protocol_main_loop()
   // Primary loop! Upon a system abort, this exits back to main() to reset the system. 
   // ---------------------------------------------------------------------------------  
   
-  uint8_t iscomment = false;
-  uint8_t char_counter = 0;
-  uint8_t c;
   for (;;) {
-
-    // Process one line of incoming serial data, as the data becomes available. Performs an
-    // initial filtering by removing spaces and comments and capitalizing all letters.
-    
-    // NOTE: While comment, spaces, and block delete(if supported) handling should technically 
-    // be done in the g-code parser, doing it here helps compress the incoming data into Grbl's
-    // line buffer, which is limited in size. The g-code standard actually states a line can't
-    // exceed 256 characters, but the Arduino Uno does not have the memory space for this.
-    // With a better processor, it would be very easy to pull this initial parsing out as a 
-    // seperate task to be shared by the g-code parser and Grbl's system commands.
-    
-    while((c = serial_read()) != SERIAL_NO_DATA) {
-      if ((c == '\n') || (c == '\r')) { // End of line reached
-        line[char_counter] = 0; // Set string termination character.
-        protocol_execute_line(line); // Line is complete. Execute it!
-        iscomment = false;
-        char_counter = 0;
-      } else {
-        if (iscomment) {
-          // Throw away all comment characters
-          if (c == ')') {
-            // End of comment. Resume line.
-            iscomment = false;
-          }
-        } else {
-          if (c <= ' ') { 
-            // Throw away whitepace and control characters  
-          } else if (c == '/') { 
-            // Block delete NOT SUPPORTED. Ignore character.
-            // NOTE: If supported, would simply need to check the system if block delete is enabled.
-          } else if (c == '(') {
-            // Enable comments flag and ignore all characters until ')' or EOL.
-            // NOTE: This doesn't follow the NIST definition exactly, but is good enough for now.
-            // In the future, we could simply remove the items within the comments, but retain the
-            // comment control characters, so that the g-code parser can error-check it.
-            iscomment = true;
-          // } else if (c == ';') {
-            // Comment character to EOL NOT SUPPORTED. LinuxCNC definition. Not NIST.
-            
-          // TODO: Install '%' feature 
-          // } else if (c == '%') {
-            // Program start-end percent sign NOT SUPPORTED.
-            // NOTE: This maybe installed to tell Grbl when a program is running vs manual input,
-            // where, during a program, the system auto-cycle start will continue to execute 
-            // everything until the next '%' sign. This will help fix resuming issues with certain
-            // functions that empty the planner buffer to execute its task on-time.
-
-          } else if (char_counter >= (LINE_BUFFER_SIZE-1)) {
-            // Detect line buffer overflow. Report error and reset line buffer.
-            report_status_message(STATUS_OVERFLOW);
-            iscomment = false;
-            char_counter = 0;
-          } else if (c >= 'a' && c <= 'z') { // Upcase lowercase
-            line[char_counter++] = c-'a'+'A';
-          } else {
-            line[char_counter++] = c;
-          }
-        }
-      }
-    }
-    
+	protocol_process();
     // If there are no more characters in the serial read buffer to be processed and executed,
     // this indicates that g-code streaming has either filled the planner buffer or has 
     // completed. In either case, auto-cycle start, if enabled, any queued moves.
     protocol_auto_cycle_start();
 
     protocol_execute_realtime();  // Runtime command check point.
+	jogging();
     if (sys.abort) { return; } // Bail to main() program loop to reset system.
               
   }
@@ -185,6 +191,9 @@ void protocol_execute_realtime()
     // the source of the error to the user. If critical, Grbl disables by entering an infinite
     // loop until system reset/abort.
     sys.state = STATE_ALARM; // Set system alarm state
+	#ifdef LED_PRESENT
+	LED_PORT &= ~(1<<LED_ERROR_BIT);
+    #endif
     if (rt_exec & EXEC_ALARM_HARD_LIMIT) {
       report_alarm_message(ALARM_HARD_LIMIT_ERROR); 
     } else if (rt_exec & EXEC_ALARM_SOFT_LIMIT) {
@@ -211,6 +220,10 @@ void protocol_execute_realtime()
     bit_false_atomic(sys.rt_exec_alarm,0xFF); // Clear all alarm flags
   }
   
+  #ifdef LED_PRESENT
+  if (sys.state != STATE_ALARM) LED_PORT |= (1<<LED_ERROR_BIT);
+  #endif
+
   // Check amd execute realtime commands
   rt_exec = sys.rt_exec_state; // Copy volatile sys.rt_exec_state.
   if (rt_exec) { // Enter only if any bit flag is true

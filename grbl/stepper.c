@@ -186,6 +186,10 @@ void st_wake_up()
   if (bit_istrue(settings.flags,BITFLAG_INVERT_ST_ENABLE)) { STEPPERS_DISABLE_PORT |= (1<<STEPPERS_DISABLE_BIT); }
   else { STEPPERS_DISABLE_PORT &= ~(1<<STEPPERS_DISABLE_BIT); }
 
+  #ifdef LED_PRESENT
+  LED_PORT &= ~(1<<LED_RUN_BIT); // active low
+  #endif
+
   if (sys.state & (STATE_CYCLE | STATE_HOMING)){
     // Initialize stepper output bits
     st.dir_outbits = dir_port_invert_mask; 
@@ -204,6 +208,9 @@ void st_wake_up()
 
     // Enable Stepper Driver Interrupt
     TIMSK1 |= (1<<OCIE1A);
+  }
+  else if (sys.state & STATE_JOG) {
+	//jogging, do nothing, no timer since handling in jogging function
   }
 }
 
@@ -227,6 +234,9 @@ void st_go_idle()
   if (bit_istrue(settings.flags,BITFLAG_INVERT_ST_ENABLE)) { pin_state = !pin_state; } // Apply pin invert.
   if (pin_state) { STEPPERS_DISABLE_PORT |= (1<<STEPPERS_DISABLE_BIT); }
   else { STEPPERS_DISABLE_PORT &= ~(1<<STEPPERS_DISABLE_BIT); }
+  #ifdef LED_PRESENT
+  LED_PORT |= (1<<LED_RUN_BIT); // active low, so set high
+  #endif
 }
 
 

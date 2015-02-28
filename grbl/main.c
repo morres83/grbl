@@ -46,12 +46,20 @@ int main(void)
   // not after disabling the alarm locks. Prevents motion startup blocks from crashing into
   // things uncontrollably. Very bad.
   #ifdef HOMING_INIT_LOCK
-    if (bit_istrue(settings.flags,BITFLAG_HOMING_ENABLE)) { sys.state = STATE_ALARM; }
+    if (bit_istrue(settings.flags,BITFLAG_HOMING_ENABLE)) { 
+		sys.state = STATE_ALARM; 
+		#ifdef LED_PRESENT
+		LED_PORT &= ~(1<<LED_ERROR_BIT);
+		#endif
+	}
   #endif
   
   // Force Grbl into an ALARM state upon a power-cycle or hard reset.
   #ifdef FORCE_INITIALIZATION_ALARM
     sys.state = STATE_ALARM;
+	#ifdef LED_PRESENT
+	LED_PORT &= ~(1<<LED_ERROR_BIT);
+	#endif
   #endif
   
   // Grbl initialization loop upon power-up or a system abort. For the latter, all processes
@@ -70,6 +78,7 @@ int main(void)
     probe_init();
     plan_reset(); // Clear block buffer and planner variables
     st_reset(); // Clear stepper subsystem variables.
+	jog_init();
 
     // Sync cleared gcode and planner positions to current system position.
     plan_sync_position();

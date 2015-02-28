@@ -2,7 +2,11 @@
 
 
 ***
+This fork and branch is to implement the GRBL-JOG of the German c't hacks magazine into GRBL 0.9
+Orignially it was implemented in GRBL 0.8 by Carsten Meyer, Redaktion c't Hacks, Make Deutschland (cm@ct.de)
+Code changes and further implementation into GRBL 0.9 in this branch by Matthias Nüßlein (mail@morres.eu)
 
+*** 
 Grbl is a no-compromise, high performance, low cost alternative to parallel-port-based motion control for CNC milling. It will run on a vanilla Arduino (Duemillanove/Uno) as long as it sports an Atmega 328. 
 
 The controller is written in highly optimized C utilizing every clever feature of the AVR-chips to achieve precise timing and asynchronous operation. It is able to maintain up to 30kHz of stable, jitter free control pulses.
