@@ -22,8 +22,10 @@
 #define grbl_h
 
 // Grbl versioning system
+<<<<<<< HEAD
 #define GRBL_VERSION "0.9i/morres83/GRBL-JOG"
-#define GRBL_VERSION_BUILD "20150302"
+#define GRBL_VERSION_BUILD "20150307"
+>>>>>>> upstream/edge
 
 // Define standard libraries used by Grbl.
 #include <avr/io.h>
