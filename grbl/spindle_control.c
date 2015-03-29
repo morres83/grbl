@@ -24,17 +24,21 @@
 
 void spindle_init()
 {    
-  // On the Uno, spindle enable and PWM are shared. Other CPUs have seperate enable pin.
+  // Configure variable spindle PWM and enable pin, if requried. On the Uno, PWM and enable are
+  // combined unless configured otherwise.
   #ifdef VARIABLE_SPINDLE
     SPINDLE_PWM_DDR |= (1<<SPINDLE_PWM_BIT); // Configure as PWM output pin.
-    #ifndef CPU_MAP_ATMEGA328P 
+    #if defined(CPU_MAP_ATMEGA2560) || defined(USE_SPINDLE_DIR_AS_ENABLE_PIN)
       SPINDLE_ENABLE_DDR |= (1<<SPINDLE_ENABLE_BIT); // Configure as output pin.
     #endif     
-  #else
+  // Configure no variable spindle and only enable pin.
+  #else  
     SPINDLE_ENABLE_DDR |= (1<<SPINDLE_ENABLE_BIT); // Configure as output pin.
   #endif
   #ifdef SPINDLE_DIRECTION_PRESENT
-    SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT); // Configure as output pin.
+  	#ifndef USE_SPINDLE_DIR_AS_ENABLE_PIN
+		SPINDLE_DIRECTION_DDR |= (1<<SPINDLE_DIRECTION_BIT); // Configure as output pin.
+  	#endif
   #endif
   spindle_stop();
 }
@@ -45,7 +49,7 @@ void spindle_stop()
   // On the Uno, spindle enable and PWM are shared. Other CPUs have seperate enable pin.
   #ifdef VARIABLE_SPINDLE
     TCCRA_REGISTER &= ~(1<<COMB_BIT); // Disable PWM. Output voltage is zero.
-    #ifndef CPU_MAP_ATMEGA328P 
+    #if defined(CPU_MAP_ATMEGA2560) || defined(USE_SPINDLE_DIR_AS_ENABLE_PIN)
       SPINDLE_ENABLE_PORT &= ~(1<<SPINDLE_ENABLE_BIT); // Set pin to low.
     #endif
   #else
@@ -63,11 +67,13 @@ void spindle_set_state(uint8_t state, float rpm)
 
   } else {
 	#ifdef SPINDLE_DIRECTION_PRESENT	
-    if (state == SPINDLE_ENABLE_CW) {
-      SPINDLE_DIRECTION_PORT &= ~(1<<SPINDLE_DIRECTION_BIT);
-    } else {
-      SPINDLE_DIRECTION_PORT |= (1<<SPINDLE_DIRECTION_BIT);
-    }
+    	#ifndef USE_SPINDLE_DIR_AS_ENABLE_PIN
+      		if (state == SPINDLE_ENABLE_CW) {
+        		SPINDLE_DIRECTION_PORT &= ~(1<<SPINDLE_DIRECTION_BIT);
+      		} else {
+        		SPINDLE_DIRECTION_PORT |= (1<<SPINDLE_DIRECTION_BIT);
+      		}
+    	#endif
 	#endif
 
     #ifdef VARIABLE_SPINDLE
@@ -95,9 +101,11 @@ void spindle_set_state(uint8_t state, float rpm)
       #endif
       OCR_REGISTER = current_pwm; // Set PWM pin output
     
-      #ifdef CPU_MAP_ATMEGA2560 // On the Uno, spindle enable and PWM are shared.
+      // On the Uno, spindle enable and PWM are shared, unless otherwise specified.
+      #if defined(CPU_MAP_ATMEGA2560) || defined(USE_SPINDLE_DIR_AS_ENABLE_PIN) 
         SPINDLE_ENABLE_PORT |= (1<<SPINDLE_ENABLE_BIT);
       #endif
+      
     #else   
       SPINDLE_ENABLE_PORT |= (1<<SPINDLE_ENABLE_BIT);
     #endif
