@@ -1,4 +1,4 @@
-![GitHub Logo](/doc/logo/Grbl Logo 250px.png)
+![GitHub Logo](/doc/media/Grbl Logo 250px.png)
 
 
 ***
@@ -25,9 +25,14 @@ Grbl includes full acceleration management with look ahead. That means the contr
 
 ***
 
+### Official Supporters of the Grbl CNC Project
+[![Carbide3D](http://carbide3d.com/files/logo_240px.png)](http://carbide3d.com)  [![Inventables](https://dzevsq2emy08i.cloudfront.net/paperclip/press_image_uploads/62/low_res/inventables-logo.png)](http://inventables.com)
+
+***
+
 _**Master Branch:**_
-* [Grbl v0.9i Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1EiviDk) _(2015-03-15)_
-* [Grbl v0.9i Atmega328p 16mhz 115200baud with ShapeOko2 defaults](http://bit.ly/1NYIfKl) _(2015-03-15)_
+* [Grbl v0.9i Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1EiviDk) _(2015-03-29)_
+* [Grbl v0.9i Atmega328p 16mhz 115200baud with ShapeOko2 defaults](http://bit.ly/1NYIfKl) _(2015-03-29)_
   - **IMPORTANT INFO WHEN UPGRADING TO GRBL v0.9i:** 
   - Baudrate is now **115200** (Up from 9600). 
   - Variable spindle is now enabled by default. Z-limit(D12) and spindle enable(D11) have switched to access the hardware PWM on D11. Homing will not work if you do not re-wire your Z-limit switch to D12.
@@ -41,6 +46,7 @@ _**Archives:**_
 * [Grbl v0.51 Atmega328p 16mhz 9600baud](http://bit.ly/W75BS1)
 * [Grbl v0.6b Atmega168 16mhz 9600baud](http://bit.ly/SScWnE)
 * [Grbl v0.51 Atmega168 16mhz 9600baud](http://bit.ly/VXyrYu)
+
 
 ***
 
@@ -97,4 +103,3 @@ List of Supported G-Codes in Grbl v0.9i Master:
 Grbl is an open-source project and fueled by the free-time of our intrepid administrators and altruistic users. If you'd like to donate, all proceeds will be used to help fund supporting hardware and testing equipment. Thank you!
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CUGXJHXA36BYW)
-
