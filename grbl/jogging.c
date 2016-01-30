@@ -249,7 +249,7 @@ void jogging()
 		}
 		
 		// stop and exit if done
-		if (jog_exit || (sys.rt_exec_state & EXEC_RESET)) {
+		if (jog_exit || (sys_rt_exec_state & EXEC_RESET)) {
 			st_go_idle();
 			sys.state = last_sys_state;
 			plan_sync_position();
@@ -275,7 +275,7 @@ void jogging()
 			work_position += mm_per_step;    // relative print_position in mm since last report
 		}
 		
-		if (sys.rt_exec_state & EXEC_STATUS_REPORT) {
+		if (sys_rt_exec_state & EXEC_STATUS_REPORT) {
 			if (step_delay > 250) {
 				// status report requested, print short msg only
 				printPgmString(PSTR("Jog"));
@@ -291,7 +291,7 @@ void jogging()
 			{
 				printPgmString(PSTR("JogF\r\n"));
 			}
-			sys.rt_exec_state = 0;
+			sys_rt_exec_state = 0;
 		}
 		
 		delay_us(step_delay);
