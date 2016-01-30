@@ -502,11 +502,8 @@ void report_realtime_status()
   
   #ifdef REPORT_LIMIT_PIN_STATE
     printPgmString(PSTR(",Lim:"));
-    uint8_t idx;
-    for (idx=0; idx<N_AXIS; idx++) {
-      if (LIMIT_PIN & get_limit_pin_mask(idx)) { printString(PSTR("1")); }
-      else { printString(PSTR("0")); }
-    }
+    print_unsigned_int8(limits_get_state(),2,N_AXIS);
+  }
   #endif
   
   #ifdef REPORT_CONTROL_PIN_STATE 

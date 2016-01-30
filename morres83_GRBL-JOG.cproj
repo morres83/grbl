@@ -139,6 +139,33 @@
     <Compile Include="grbl\cpu_map_atmega644.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="grbl\defaults_generic.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_hackswood.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_oxcnc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_shapeoko.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_shapeoko2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_shapeoko3.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_sherline.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_simulator.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults_zen_toolworks_7x7.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="grbl\jogging.c">
       <SubType>compile</SubType>
     </Compile>
