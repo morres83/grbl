@@ -44,7 +44,6 @@
 #define BITFLAG_RT_STATUS_WORK_POSITION     bit(1)
 #define BITFLAG_RT_STATUS_PLANNER_BUFFER    bit(2)
 #define BITFLAG_RT_STATUS_SERIAL_RX         bit(3)
-#define BITFLAG_RT_STATUS_LIMIT_PINS        bit(4)
 
 // Define EEPROM memory address location values for Grbl settings and parameters
 // NOTE: The Atmega328p has 1KB EEPROM. The upper half is reserved for parameters and
