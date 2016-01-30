@@ -21,7 +21,7 @@
 #ifndef grbl_h
 #define grbl_h
 
-// Grb
+// Grbl versioning system
 #define GRBL_VERSION "0.9i/morres83/GRBL-JOG"
 #define GRBL_VERSION_BUILD "20160130"
 
