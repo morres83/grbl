@@ -139,6 +139,10 @@ void report_feedback_message(uint8_t message_code)
     printPgmString(PSTR("Disabled")); break; 
     case MESSAGE_SAFETY_DOOR_AJAR:
     printPgmString(PSTR("Check Door")); break;
+    case MESSAGE_PROGRAM_END:
+    printPgmString(PSTR("Pgm End")); break;
+    case MESSAGE_RESTORE_DEFAULTS:
+    printPgmString(PSTR("Restoring defaults")); break;
   }
   printPgmString(PSTR("]\r\n"));
 }
