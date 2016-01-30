@@ -149,8 +149,6 @@ void limits_go_home(uint8_t cycle_mask)
   uint8_t step_pin[N_AXIS];
   float target[N_AXIS];
   
-  uint8_t limit_pin[N_AXIS];
-
   float max_travel = 0.0;
   for (idx=0; idx<N_AXIS; idx++) {  
     // Initialize step pin masks
