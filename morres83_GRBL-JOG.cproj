@@ -130,40 +130,46 @@
   </PropertyGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
   <ItemGroup>
-    <Compile Include="grbl\cpu_map_atmega2560.h">
+    <Compile Include="grbl\cpu_map\cpu_map_atmega2560.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\cpu_map_atmega328p.h">
+    <Compile Include="grbl\cpu_map\cpu_map_atmega328p.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\cpu_map_atmega644.h">
+    <Compile Include="grbl\cpu_map\cpu_map_atmega644.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_generic.h">
+    <Compile Include="grbl\defaults\defaults_generic.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_hackswood.h">
+    <Compile Include="grbl\defaults\defaults_hackswood.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_oxcnc.h">
+    <Compile Include="grbl\defaults\defaults_oxcnc.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_shapeoko.h">
+    <Compile Include="grbl\defaults\defaults_shapeoko.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_shapeoko2.h">
+    <Compile Include="grbl\defaults\defaults_shapeoko2.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_shapeoko3.h">
+    <Compile Include="grbl\defaults\defaults_shapeoko3.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_sherline.h">
+    <Compile Include="grbl\defaults\defaults_sherline.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_simulator.h">
+    <Compile Include="grbl\defaults\defaults_simulator.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="grbl\defaults_zen_toolworks_7x7.h">
+    <Compile Include="grbl\defaults\defaults_x_carve_1000mm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults\defaults_x_carve_500mm.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="grbl\defaults\defaults_zen_toolworks_7x7.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="grbl\jogging.c">
@@ -284,5 +290,7 @@
     <Compile Include="grbl\system.c">
       <SubType>compile</SubType>
     </Compile>
+    <Folder Include="grbl\cpu_map" />
+    <Folder Include="grbl\defaults" />
   </ItemGroup>
 </Project>
