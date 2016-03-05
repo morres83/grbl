@@ -18,10 +18,9 @@
 */
 
 #include "grbl.h"
-
-#define JOG_SPEED_FAC (JOG_MAX_SPEED-JOG_MIN_SPEED)/255
 #define ADCSRA_init 0x83  // AD enable, IRQ off, Prescaler 8
 #define ADMUX_init  0x20  // ADLAR =1 (left adjusted, 8-Bit-Result on ADCH)
+uint32_t speed_span[3];
 
 void jog_init() {
 	// Initialize jog switch port bits and DDR
@@ -41,6 +40,12 @@ void jog_init() {
 	ADCSRA |= (1<<ADSC);
 	while (ADCSRA & (1<<ADSC) ) {}         // wait until initial conversion is done
 	(void) ADCH; // ADCH needs to be read one time
+
+	for (uint8_t i=0; i<N_AXIS; i++){
+		//speed span = 4/5 of max rate; divided by 255 for ADC multiplication; 4/(5 * 60 * 255) = 19125
+		speed_span[i] = settings.max_rate[i]*settings.steps_per_mm[i] / 19125;
+	}
+
 }
 
 void jog_btn_release() {
@@ -69,8 +74,9 @@ void jogging()
 	uint8_t jog_bits, jog_bits_old, out_bits0, jog_exit, last_sys_state;
 	uint8_t i, spindle_bits;
 	
-	uint32_t dest_step_rate, step_rate, step_delay; // Step delay after pulse
+	uint32_t dest_step_rate, step_rate, step_delay, init_step_rate; // Step delay after pulse
 	float work_position, mm_per_step;
+	char line[LINE_BUFFER_SIZE];
 
 	switch (sys.state) {
 		case STATE_CYCLE: case STATE_HOMING:
@@ -109,11 +115,13 @@ void jogging()
 			if (bit_istrue(settings.flags,BITFLAG_HOMING_ENABLE)) {
 				// Only perform homing if Grbl is idle or lost.
 				if ( sys.state==STATE_IDLE || sys.state==STATE_ALARM ) {
+					sys.state = STATE_HOMING; // Set system state variable
 					mc_homing_cycle();
 					if (!sys.abort) { 
 						sys.state = STATE_IDLE; // Set to IDLE when complete.
 						st_go_idle(); // Set steppers to the settings idle state before returning.
-					} // Execute startup scripts after successful homing.
+						 system_execute_startup(line); // Execute startup scripts after successful homing.
+					} 
 				}
 			}
 		} 
@@ -127,7 +135,7 @@ void jogging()
 			//      gc.coord_offset[i]    Retains the G92 coordinate offset (work coordinates) relative to
 			//                            machine zero in mm. Non-persistent. Cleared upon reset and boot.
 
-			for (i=0; i<=2; i++) { // Axes indices are consistent, so loop may be used.
+			for (i=0; i<N_AXIS; i++) { // Axes indices are consistent, so loop may be used.
 				gc_state.coord_offset[i] = gc_state.position[i] - gc_state.coord_system[i];
 			}
 
@@ -193,8 +201,11 @@ void jogging()
 
 	while (ADCSRA & (1<<ADSC)) {} // wait until conversion is finished
 	dest_step_rate = ADCH;    // set initial dest_step_rate according to analog input
-	dest_step_rate = (dest_step_rate * JOG_SPEED_FAC) + JOG_MIN_SPEED;
-	step_rate = JOG_MIN_SPEED;   // set initial step rate
+	//Formula as follows:
+	//min_rate is 1/5 of max_rate; ADC at 255 => max speed; ADC at 0 => 1/5 max speed. dest_step_rate in Hz
+	dest_step_rate = speed_span[jog_select] * (dest_step_rate + 255/4);
+	init_step_rate = settings.max_rate[jog_select] * settings.steps_per_mm[jog_select] * 1 / 16 / 60;   // set initial step rate
+	step_rate = init_step_rate;
 	jog_exit = 0;
 	
 	uint8_t bits = LIMIT_PIN;
@@ -220,8 +231,8 @@ void jogging()
 		mm_per_step = 1/settings.steps_per_mm[jog_select];
 	}
 	
-	work_position = sys.position[jog_select] / mm_per_step;
-	
+	//work_position = sys.position[jog_select] / mm_per_step;
+	work_position = sys.position[jog_select]; //NEU
 	//work_position = print_position[jog_select];
 	
 	for(;;) { // repeat until button/joystick released
@@ -242,7 +253,7 @@ void jogging()
 			}
 		}
 		else {
-			if (step_rate > (JOG_MIN_SPEED*2)) {  // switch change happened, fast brake to complete stop
+			if (step_rate > (init_step_rate)) {  // switch change happened, fast brake to complete stop
 				step_rate = ((step_rate * 99) / 100) - 5;
 			}
 			else { jog_exit = 1; } // finished to stop and exit
@@ -252,6 +263,7 @@ void jogging()
 		if (jog_exit || (sys_rt_exec_state & EXEC_RESET)) {
 			st_go_idle();
 			sys.state = last_sys_state;
+			sys.position[jog_select] = work_position;
 			plan_sync_position();
 			gc_sync_position(); // Syncs all internal position vectors to the current system position.
 			return;
@@ -264,32 +276,35 @@ void jogging()
 		delay_us(settings.pulse_microseconds>>1); //seems okay for little step  pulses
 		STEP_PORT = (STEP_PORT & ~STEP_MASK);// | (out_bits0 & STEP_MASK); //Step pulse off
 		
-		step_delay = (1000000/step_rate) - settings.pulse_microseconds - 100; // 100 = fixed value for loop time; this formula needs 30us! on my 18.432 MHz chrystal
+		step_delay = (1000000/step_rate) - settings.pulse_microseconds - 100; // 100 = fixed value for loop time; this might have to be checked by oscilloscope...
 	
 		if (reverse_flag) {
-			sys.position[jog_select]--;       // sys.position ist in Steps!
-			work_position -= mm_per_step;
+			//sys.position[jog_select]--;       // sys.position ist in Steps!
+			//work_position -= mm_per_step;
+			work_position--;
 		}
 		else {
-			sys.position[jog_select]++;
-			work_position += mm_per_step;    // relative print_position in mm since last report
+			//sys.position[jog_select]++;
+			//work_position += mm_per_step;    // relative print_position in mm since last report
+			work_position++;
 		}
 		
 		if (sys_rt_exec_state & EXEC_STATUS_REPORT) {
-			if (step_delay > 250) {
+			if (step_delay > 250) { //this might have to be checked by oscilloscope...
 				// status report requested, print short msg only
-				printPgmString(PSTR("Jog"));
+				printPgmString(PSTR("<Jog"));
 				serial_write(88 + jog_select); // 88 = X + 1 = Y etc.
 				serial_write(44);
-				printFloat(work_position, 3);
+				printFloat_CoordValue(work_position * mm_per_step - gc_state.coord_offset[jog_select]);
+				serial_write(62); // ">" char
 				serial_write(13);
 				serial_write(10);
-
+				
 				step_delay -= 250;
 			}
 			else
 			{
-				printPgmString(PSTR("JogF\r\n"));
+				printPgmString(PSTR("<Jog>\r\n"));
 			}
 			sys_rt_exec_state = 0;
 		}
@@ -298,7 +313,7 @@ void jogging()
 		
 		while (ADCSRA & (1<<ADSC)) {} // wait until conversion is finished
 		dest_step_rate = ADCH;    // set next dest_step_rate according to analog input
-		dest_step_rate = (dest_step_rate * JOG_SPEED_FAC) + JOG_MIN_SPEED;
+		dest_step_rate = speed_span[jog_select] * (dest_step_rate + 255/4);
 
 	}
 }
