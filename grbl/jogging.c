@@ -169,33 +169,36 @@ void jogging()
 	
 	// check for reverse switches
 	if (jog_bits & (1<<JOGREV_X_BIT)) { // X reverse switch on
-		out_bits0 ^= (1<<X_DIRECTION_BIT);
+		if (bit_isfalse(settings.dir_invert_mask,bit(0))) out_bits0 ^= (1<<X_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<X_STEP_BIT);
 		reverse_flag = 1;
 	}
 	else if (jog_bits & (1<<JOGREV_Y_BIT)) { // Y reverse switch on
-		out_bits0 ^= (1<<Y_DIRECTION_BIT);
+		if (bit_isfalse(settings.dir_invert_mask,bit(1))) out_bits0 ^= (1<<Y_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Y_STEP_BIT);
 		reverse_flag = 1;
 		jog_select = 1;
 	}
 	else if (jog_bits & (1<<JOGREV_Z_BIT)) { // Z reverse switch on
-		out_bits0 ^= (1<<Z_DIRECTION_BIT);
+		if (bit_isfalse(settings.dir_invert_mask,bit(2))) out_bits0 ^= (1<<Z_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Z_STEP_BIT);
-		// reverse_flag = 1; // positive Z dir!
+		reverse_flag = 1; // positive Z dir!
 		jog_select = 2;
 	}
 	// check for forward switches
 	else if (jog_bits & (1<<JOGFWD_X_BIT)) { // X forward switch on
+		if (bit_istrue(settings.dir_invert_mask,bit(0))) out_bits0 ^= (1<<X_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<X_STEP_BIT);
 	}
 	else if (jog_bits & (1<<JOGFWD_Y_BIT)) { // Y forward switch on
+		if (bit_istrue(settings.dir_invert_mask,bit(1))) out_bits0 ^= (1<<Y_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Y_STEP_BIT);
 		jog_select = 1;
 	}
 	else if (jog_bits & (1<<JOGFWD_Z_BIT)) { // Z forward switch on
+		if (bit_istrue(settings.dir_invert_mask,bit(2))) out_bits0 ^= (1<<Z_DIRECTION_BIT);
 		out_bits = out_bits0 ^ (1<<Z_STEP_BIT);
-		reverse_flag = 1; // positive Z dir!
+		//reverse_flag = 1; // positive Z dir!
 		jog_select = 2;
 	}
 
@@ -254,7 +257,7 @@ void jogging()
 		}
 		else {
 			if (step_rate > (init_step_rate)) {  // switch change happened, fast brake to complete stop
-				step_rate = ((step_rate * 99) / 100) - 5;
+				step_rate = ((step_rate * 99) / 100) - 20;
 			}
 			else { jog_exit = 1; } // finished to stop and exit
 		}

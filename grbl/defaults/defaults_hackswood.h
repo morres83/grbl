@@ -30,7 +30,7 @@
 // Grbl default settings for C'T HACKS WOODMILL.
 #define DEFAULT_X_STEPS_PER_MM 80.0 //from 1st measurement
 #define DEFAULT_Y_STEPS_PER_MM 80.0 //from 1st measurement
-#define DEFAULT_Z_STEPS_PER_MM 132.0 //from 1st measurement
+#define DEFAULT_Z_STEPS_PER_MM 266.6 //from 1st measurement
 #define DEFAULT_X_MAX_RATE 3200.0 // mm/min //from 1st test
 #define DEFAULT_Y_MAX_RATE 3200.0 // mm/min //from 1st test
 #define DEFAULT_Z_MAX_RATE 680.0 // mm/min //from 1st test
@@ -55,12 +55,12 @@
 	#define DEFAULT_HOMING_ENABLE 1  // 
 	#define DEFAULT_HOMING_DIR_MASK 3 // x,y neg, z pos
 	#define DEFAULT_HOMING_FEED_RATE 200.0 // mm/min
-	#define DEFAULT_HOMING_SEEK_RATE 3200.0 // mm/min
+	#define DEFAULT_HOMING_SEEK_RATE 2400.0 // mm/min
 	#define DEFAULT_HOMING_DEBOUNCE_DELAY 100 // msec (0-65k)
 	#define DEFAULT_HOMING_PULLOFF 5.0 // mm
 	#define DEFAULT_Z_GAUGE 10.0 // mm, Z Gauge Block Dicke
 	#define DEFAULT_Z_PULLOFF 0.0 // mm, auto pull back Z after pressing ZERO center btn
 
-#define JOG_RAMP        5     // Ramp speed inc/dec in steps/sec per loop (higher=faster)
+#define JOG_RAMP        20     // Ramp speed inc/dec in steps/sec per loop (higher=faster)
 
 #endif
